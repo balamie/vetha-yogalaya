@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import { Mail, Phone, MapPin, Send } from "lucide-react"
+import { Mail, Phone, MapPin, Clock, Send } from "lucide-react"
 
 export function ContactSection() {
   return (
@@ -12,10 +12,10 @@ export function ContactSection() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-sage font-semibold text-sm tracking-widest uppercase">Get in Touch</span>
-            <h2 className="text-3xl sm:text-4xl font-bold font-heading text-brown-800 mt-4">Start Your Journey</h2>
+            <span className="text-sage font-semibold text-sm tracking-widest uppercase">Contact</span>
+            <h2 className="text-3xl sm:text-4xl font-bold font-heading text-brown-800 mt-4">Get in Touch</h2>
             <p className="text-brown-600 mt-4 max-w-md">
-              Ready to step onto the mat? Reach out and we'll help you find the perfect practice.
+              Ready to give your child the gift of focus and calm? Reach out and we'll help you find the perfect program.
             </p>
 
             <div className="mt-8 space-y-5">
@@ -24,8 +24,17 @@ export function ContactSection() {
                   <MapPin className="h-5 w-5 text-sage" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-brown-800">Location</p>
-                  <p className="text-sm text-brown-600">Coimbatore, Tamil Nadu</p>
+                  <p className="text-sm font-semibold text-brown-800">Address</p>
+                  <p className="text-sm text-brown-600">Casagrand Supremus, Block-5, B 105<br />Thazhambur, OMR, Chennai 600130</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="h-10 w-10 rounded-full bg-sage/10 flex items-center justify-center shrink-0">
+                  <Clock className="h-5 w-5 text-sage" />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-brown-800">Hours</p>
+                  <p className="text-sm text-brown-600">Mon-Sun: 8:30 AM – 5:00 PM</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
@@ -42,10 +51,22 @@ export function ContactSection() {
                   <Mail className="h-5 w-5 text-sage" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-brown-800">Email</p>
-                  <a href="mailto:hello@vethayogalaya.com" className="text-sm text-sage hover:underline">hello@vethayogalaya.com</a>
+                  <p className="text-sm font-semibold text-brown-800">Instagram</p>
+                  <a href="https://www.instagram.com/vetha_yogalaya/" target="_blank" rel="noopener noreferrer" className="text-sm text-sage hover:underline">@vetha_yogalaya</a>
                 </div>
               </div>
+            </div>
+
+            <div className="mt-6">
+              <a
+                href="https://maps.google.com/?q=12.8445677,80.2152473"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-sage hover:underline"
+              >
+                <MapPin className="h-4 w-4" />
+                View on Google Maps
+              </a>
             </div>
           </motion.div>
 
@@ -57,16 +78,19 @@ export function ContactSection() {
             onSubmit={(e) => e.preventDefault()}
             className="rounded-2xl bg-white p-8 shadow-sm"
           >
+            <h3 className="text-lg font-bold font-heading text-brown-800 mb-2">Book a Free Trial</h3>
+            <p className="text-sm text-brown-600 mb-6">Fill in your details and we'll call you to schedule a session.</p>
             <div className="space-y-5">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <input type="text" placeholder="Your Name" required className="w-full rounded-xl border border-brown-200 bg-warm px-4 py-3 text-sm text-brown-800 placeholder:text-brown-400 focus:outline-none focus:ring-2 focus:ring-sage/30" />
+                <input type="text" placeholder="Parent's Name" required className="w-full rounded-xl border border-brown-200 bg-warm px-4 py-3 text-sm text-brown-800 placeholder:text-brown-400 focus:outline-none focus:ring-2 focus:ring-sage/30" />
                 <input type="email" placeholder="Your Email" required className="w-full rounded-xl border border-brown-200 bg-warm px-4 py-3 text-sm text-brown-800 placeholder:text-brown-400 focus:outline-none focus:ring-2 focus:ring-sage/30" />
               </div>
-              <input type="tel" placeholder="Phone Number" className="w-full rounded-xl border border-brown-200 bg-warm px-4 py-3 text-sm text-brown-800 placeholder:text-brown-400 focus:outline-none focus:ring-2 focus:ring-sage/30" />
-              <textarea rows={4} placeholder="Your Message (optional)" className="w-full rounded-xl border border-brown-200 bg-warm px-4 py-3 text-sm text-brown-800 placeholder:text-brown-400 focus:outline-none focus:ring-2 focus:ring-sage/30 resize-none" />
+              <input type="tel" placeholder="Phone Number" required className="w-full rounded-xl border border-brown-200 bg-warm px-4 py-3 text-sm text-brown-800 placeholder:text-brown-400 focus:outline-none focus:ring-2 focus:ring-sage/30" />
+              <input type="text" placeholder="Child's Name & Age" required className="w-full rounded-xl border border-brown-200 bg-warm px-4 py-3 text-sm text-brown-800 placeholder:text-brown-400 focus:outline-none focus:ring-2 focus:ring-sage/30" />
+              <textarea rows={3} placeholder="Any specific concerns? (optional)" className="w-full rounded-xl border border-brown-200 bg-warm px-4 py-3 text-sm text-brown-800 placeholder:text-brown-400 focus:outline-none focus:ring-2 focus:ring-sage/30 resize-none" />
               <button type="submit" className="w-full rounded-full bg-sage px-8 py-3.5 text-sm font-semibold text-white hover:bg-olive transition-colors inline-flex items-center justify-center gap-2">
                 <Send className="h-4 w-4" />
-                Send Message
+                Book Free Trial
               </button>
             </div>
           </motion.form>

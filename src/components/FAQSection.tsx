@@ -3,12 +3,12 @@ import { motion, AnimatePresence } from "framer-motion"
 import { ChevronDown } from "lucide-react"
 
 const faqs = [
-  { q: "I'm a complete beginner — where do I start?", a: "Our Beginner plan and Hatha Yoga classes are designed exactly for you. Join any free session to experience our teaching style without commitment." },
-  { q: "What should I bring to class?", a: "Comfortable clothing and a water bottle. We provide all equipment — mats, blocks, straps, and bolsters." },
-  { q: "How long are the classes?", a: "Regular classes run 60 minutes. Free sessions are 45 minutes. Workshops and special programs vary." },
-  { q: "Do you offer online classes?", a: "Yes! All our Regular and Unlimited plans include access to live-streamed classes. Recordings are available for 48 hours." },
-  { q: "What if I have an injury or medical condition?", a: "Please inform us before your first class. Our instructors will modify poses to suit your needs. We recommend a 1-on-1 session to start." },
-  { q: "Can I pause or cancel my membership?", a: "Yes — you can pause for up to 30 days. Annual plans can be cancelled with 15 days notice. No lock-in contracts." },
+  { q: "What age groups do you teach?", a: "We have programs for children aged 3-7, 8-12, and 13-17. Each age group has age-appropriate poses, games, and mindfulness exercises." },
+  { q: "My child is very active and can't sit still — will yoga help?", a: "Absolutely! Our classes channel that energy into focused movement. Many of our most energetic kids become the most focused practitioners within weeks." },
+  { q: "What should my child bring to class?", a: "Just comfortable clothes. We provide all mats, props, and materials. Water bottles are available at the studio." },
+  { q: "How long is each class?", a: "Kids classes run 45 minutes — the perfect duration to maintain engagement. Teen classes are 60 minutes." },
+  { q: "Do you offer online classes?", a: "Currently all classes are in-person at our OMR studio. We believe the group energy and personal attention make a real difference for children." },
+  { q: "How can I track my child's progress?", a: "Regular plan includes monthly progress reports and parent consultations. You'll see improvements in focus, calmness, and confidence." },
 ]
 
 export function FAQSection() {

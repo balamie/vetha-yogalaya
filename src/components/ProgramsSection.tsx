@@ -1,27 +1,27 @@
 import { motion } from "framer-motion"
-import { Clock, Users, Sun } from "lucide-react"
+import { Clock, Users, Heart } from "lucide-react"
 
 const programs = [
   {
-    title: "Hatha Yoga",
-    desc: "Classical yoga postures held with awareness. Perfect for beginners and those seeking a gentle practice.",
-    icon: Sun,
-    tag: "All Levels",
-    schedule: "Mon-Wed-Fri, 6:30 AM",
+    title: "Kids Focus Yoga (3-7 yrs)",
+    desc: "Fun animal poses, storytelling yoga, and breathing games that build concentration and body awareness in young children.",
+    icon: Heart,
+    tag: "Ages 3-7",
+    schedule: "Mon-Wed-Fri, 4:00 PM",
   },
   {
-    title: "Vinyasa Flow",
-    desc: "Dynamic sequences linking breath with movement. Build strength, flexibility, and endurance.",
-    icon: Clock,
-    tag: "Intermediate",
-    schedule: "Tue-Thu-Sat, 7:00 AM",
-  },
-  {
-    title: "Ashtanga Yoga",
-    desc: "Traditional Mysore-style practice. A structured series for disciplined practitioners.",
+    title: "Kids Focus Yoga (8-12 yrs)",
+    desc: "Dynamic poses, partner yoga, and mindfulness exercises designed to improve focus, reduce anxiety, and build confidence.",
     icon: Users,
-    tag: "Advanced",
-    schedule: "Mon-Sat, 5:30 AM",
+    tag: "Ages 8-12",
+    schedule: "Tue-Thu-Sat, 4:00 PM",
+  },
+  {
+    title: "Teen Yoga & Mindfulness",
+    desc: "Stress management, breathing techniques, and yoga for teens navigating academic pressure and digital distractions.",
+    icon: Clock,
+    tag: "Ages 13-17",
+    schedule: "Sat-Sun, 10:00 AM",
   },
 ]
 
@@ -37,8 +37,8 @@ export function ProgramsSection() {
           className="text-center mb-16"
         >
           <span className="text-sage font-semibold text-sm tracking-widest uppercase">Our Programs</span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading text-brown-800 mt-4">Find Your Practice</h2>
-          <p className="text-brown-600 mt-4 max-w-xl mx-auto">From gentle beginnings to advanced practice — a path for every stage of your journey.</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading text-brown-800 mt-4">Programs for Every Age</h2>
+          <p className="text-brown-600 mt-4 max-w-xl mx-auto">Age-appropriate yoga classes designed to support your child's development at every stage.</p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

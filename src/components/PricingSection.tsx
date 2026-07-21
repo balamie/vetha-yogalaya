@@ -4,24 +4,24 @@ import { Check } from "lucide-react"
 
 const plans = [
   {
-    name: "Beginner",
-    monthly: 1499,
-    annual: 14999,
-    features: ["4 classes per month", "Basic pose instruction", "Online access", "Community group"],
+    name: "Trial Pack",
+    monthly: 999,
+    annual: 9999,
+    features: ["2 classes per week", "Any age group", "Basic assessment", "Free trial session included"],
     popular: false,
   },
   {
     name: "Regular",
-    monthly: 2999,
-    annual: 29999,
-    features: ["12 classes per month", "All level access", "Priority booking", "Free workshop access", "1-on-1 session/month"],
+    monthly: 1999,
+    annual: 19999,
+    features: ["4 classes per week", "Age-appropriate batch", "Monthly progress report", "Free workshop access", "1-on-1 parent consultation/month"],
     popular: true,
   },
   {
-    name: "Unlimited",
-    monthly: 4999,
-    annual: 49999,
-    features: ["Unlimited classes", "All programs included", "Personalized plan", "Retreat discounts", "Guest passes (2/month)", "Priority support"],
+    name: "Premium",
+    monthly: 3499,
+    annual: 34999,
+    features: ["Unlimited classes", "All age groups", "Personalized plan", "Retreat discounts", "Sibling discount eligible", "Priority support"],
     popular: false,
   },
 ]
@@ -40,7 +40,7 @@ export function PricingSection() {
           className="text-center mb-12"
         >
           <span className="text-sage font-semibold text-sm tracking-widest uppercase">Pricing</span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading text-brown-800 mt-4">Invest in Your Wellbeing</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading text-brown-800 mt-4">Simple, Transparent Pricing</h2>
         </motion.div>
 
         <div className="flex items-center justify-center gap-3 mb-12">

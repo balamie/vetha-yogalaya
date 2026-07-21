@@ -28,7 +28,7 @@ export function HeroSection() {
           >
             <span className="inline-flex items-center rounded-full bg-white/10 backdrop-blur-sm px-4 py-1.5 text-sm text-white/80 border border-white/20 mb-6">
               <span className="h-2 w-2 rounded-full bg-sage mr-2" />
-              Coimbatore's Premium Yoga Studio
+              Kids Focus Yoga &mdash; OMR, Chennai
             </span>
           </motion.div>
 
@@ -38,10 +38,10 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-heading text-white leading-[1.1] mb-6"
           >
-            Find Your{" "}
-            <span className="text-sage">Peace</span>
+            Helping Kids Beat{" "}
+            <span className="text-sage">Screen Addiction</span>
             <br />
-            Within
+            &amp; Build Focus Naturally
           </motion.h1>
 
           <motion.p
@@ -50,7 +50,7 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-lg sm:text-xl text-white/70 max-w-xl mb-8 leading-relaxed"
           >
-            Ancient wisdom meets modern practice. Transform your body, calm your mind, and nourish your soul at Vēthā Yogalaya.
+            Specialised children's yoga programs that improve concentration, reduce anxiety, and build confidence — all through fun, engaging sessions.
           </motion.p>
 
           <motion.div
@@ -61,10 +61,10 @@ export function HeroSection() {
           >
             <a href="#free-session" className="inline-flex items-center rounded-full bg-sage px-8 py-4 text-base font-semibold text-white hover:bg-olive transition-colors shadow-lg shadow-sage/30">
               <Play className="mr-2 h-5 w-5" />
-              Join Free Session
+              Book a Free Trial
             </a>
             <a href="#programs" className="inline-flex items-center rounded-full border border-white/30 text-white px-8 py-4 text-base font-medium hover:bg-white/10 transition-colors">
-              View Programs
+              Learn More
               <ChevronRight className="ml-1 h-4 w-4" />
             </a>
           </motion.div>

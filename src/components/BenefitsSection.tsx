@@ -2,10 +2,10 @@ import { motion } from "framer-motion"
 import { Heart, Wind, Users, Sparkles } from "lucide-react"
 
 const benefits = [
-  { icon: Heart, title: "Holistic Wellness", desc: "Integrate body, mind, and spirit through traditional yoga practices designed for modern life." },
-  { icon: Wind, title: "Breath & Mindfulness", desc: "Master pranayama and meditation techniques that reduce stress and improve focus." },
-  { icon: Users, title: "Expert Guidance", desc: "Learn from certified instructors with years of experience in Hatha, Vinyasa, and Ashtanga." },
-  { icon: Sparkles, title: "Personalized Journey", desc: "Every practice is tailored to your body type, fitness level, and wellness goals." },
+  { icon: Heart, title: "Beat Screen Addiction", desc: "Replace passive screen time with active, mindful movement that engages both body and mind." },
+  { icon: Wind, title: "Build Focus & Calm", desc: "Yoga and breathing exercises that improve concentration, memory, and emotional regulation in children." },
+  { icon: Users, title: "Fun Group Sessions", desc: "Kids learn better together. Our small group classes make yoga a joyful social experience." },
+  { icon: Sparkles, title: "Screen-Free Fun", desc: "Engaging, hands-on activities that prove movement is more entertaining than any device." },
 ]
 
 export function BenefitsSection() {
@@ -20,8 +20,8 @@ export function BenefitsSection() {
           className="text-center mb-16"
         >
           <span className="text-sage font-semibold text-sm tracking-widest uppercase">Why Vēthā</span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading text-brown-800 mt-4">What You'll Gain</h2>
-          <p className="text-brown-600 mt-4 max-w-xl mx-auto">More than flexibility — discover strength, clarity, and a deeper connection to yourself.</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading text-brown-800 mt-4">Why Kids Love Vēthā</h2>
+          <p className="text-brown-600 mt-4 max-w-xl mx-auto">Screen-free fun that builds focus, calm, and confidence — naturally.</p>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">

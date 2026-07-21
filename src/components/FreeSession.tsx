@@ -14,10 +14,10 @@ export function FreeSession() {
           >
             <span className="text-gold font-semibold text-sm tracking-widest uppercase">Try Before You Commit</span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading text-white mt-4">
-              Your First Session Is Free
+              Free Trial Session for Every Child
             </h2>
             <p className="text-white/80 mt-4 max-w-lg mx-auto">
-              Experience the Vēthā difference with a complimentary 45-minute session. No strings attached — just bring yourself.
+              Let your child experience the magic of yoga with a complimentary session. See the difference in focus and calm firsthand.
             </p>
           </motion.div>
 
@@ -30,18 +30,18 @@ export function FreeSession() {
           >
             <div className="rounded-xl bg-white/10 backdrop-blur-sm p-6 border border-white/20">
               <Calendar className="h-8 w-8 text-gold mb-3" />
-              <h3 className="text-white font-semibold mb-2">1. Book Your Spot</h3>
-              <p className="text-sm text-white/70">Pick a date and time that works for you from our weekly schedule.</p>
+              <h3 className="text-white font-semibold mb-2">1. Book a Spot</h3>
+              <p className="text-sm text-white/70">Pick a convenient time from our weekly schedule — morning or evening slots available.</p>
             </div>
             <div className="rounded-xl bg-white/10 backdrop-blur-sm p-6 border border-white/20">
               <Gift className="h-8 w-8 text-gold mb-3" />
-              <h3 className="text-white font-semibold mb-2">2. Attend & Enjoy</h3>
-              <p className="text-sm text-white/70">Show up, breathe, stretch, and experience authentic yoga guidance.</p>
+              <h3 className="text-white font-semibold mb-2">2. Bring Your Child</h3>
+              <p className="text-sm text-white/70">We provide everything. Just bring your child in comfortable clothes. Watch them enjoy.</p>
             </div>
             <div className="rounded-xl bg-white/10 backdrop-blur-sm p-6 border border-white/20">
               <ArrowRight className="h-8 w-8 text-gold mb-3" />
-              <h3 className="text-white font-semibold mb-2">3. Decide Later</h3>
-              <p className="text-sm text-white/70">No pressure — choose a plan that fits your lifestyle when you're ready.</p>
+              <h3 className="text-white font-semibold mb-2">3. See the Difference</h3>
+              <p className="text-sm text-white/70">No pressure. If they love it (and they will), choose a plan that fits your schedule.</p>
             </div>
           </motion.div>
 
@@ -53,7 +53,7 @@ export function FreeSession() {
             className="mt-10"
           >
             <a href="#contact" className="inline-flex items-center rounded-full bg-white text-sage px-10 py-4 text-base font-semibold hover:bg-white/90 transition-colors shadow-lg">
-              Book Free Session
+              Book Free Trial
               <ArrowRight className="ml-2 h-5 w-5" />
             </a>
           </motion.div>

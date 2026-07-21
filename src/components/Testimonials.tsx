@@ -3,21 +3,21 @@ import { Star } from "lucide-react"
 
 const testimonials = [
   {
-    name: "Priya R.",
-    role: "Member since 2023",
-    text: "Vēthā Yogalaya transformed my relationship with my body. After just three months, my chronic back pain is gone, and I feel stronger than ever. The instructors are incredibly attentive.",
+    name: "Priya S.",
+    role: "Parent of Aryan (age 7)",
+    text: "My son used to be glued to the iPad after school. After just two weeks at Vēthā, he's calmer, sleeps better, and actually looks forward to his yoga sessions. Amazing transformation.",
     rating: 5,
   },
   {
-    name: "Arun K.",
-    role: "Member since 2022",
-    text: "I was skeptical about yoga at first, but the free session won me over. The mix of traditional practice with modern understanding of anatomy makes this studio special. Highly recommend.",
+    name: "Ramesh K.",
+    role: "Parent of Nandhini (age 10)",
+    text: "Nandhini's teachers noticed the difference before we did — better concentration in class, less fidgeting, more confidence. The focus exercises they teach are incredible.",
     rating: 5,
   },
   {
-    name: "Meera S.",
-    role: "Member since 2024",
-    text: "The morning Ashtanga sessions at 5:30 AM have completely changed my energy levels. The discipline and community here are unmatched. Best decision I've made for my health.",
+    name: "Lakshmi M.",
+    role: "Parent of Vihaan (age 5)",
+    text: "The storytelling yoga for younger kids is brilliant. My 5-year-old learns poses through animal stories and asks to go every day. A screen-free joy we desperately needed.",
     rating: 5,
   },
 ]
@@ -34,7 +34,7 @@ export function Testimonials() {
           className="text-center mb-16"
         >
           <span className="text-sage font-semibold text-sm tracking-widest uppercase">Testimonials</span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading text-brown-800 mt-4">What Our Students Say</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading text-brown-800 mt-4">What Parents Say</h2>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
