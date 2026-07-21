@@ -12,9 +12,12 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
           <div className="col-span-2 md:col-span-1">
-            <a href="/" className="inline-flex flex-col leading-tight mb-4">
-              <span className="text-lg font-bold font-heading text-white">Vēthā</span>
-              <span className="text-xs font-semibold tracking-[3px] text-white/50">YOGALAYA</span>
+            <a href="/" className="inline-flex items-center gap-3 mb-4">
+              <img src="/vetha_Yogalaya_Logo.png" alt="Vēthā Yogalaya" className="h-10 w-auto brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" />
+              <div className="flex flex-col leading-tight">
+                <span className="text-base font-bold font-heading text-white">Vēthā</span>
+                <span className="text-[9px] font-semibold tracking-[3px] text-white/50">YOGALAYA</span>
+              </div>
             </a>
             <p className="text-sm text-white/50 leading-relaxed max-w-xs">
               Kids Focus Yoga in OMR, Chennai. Helping children beat screen addiction & distraction. Building focus, calm mind & confidence naturally.

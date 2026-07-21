@@ -32,9 +32,12 @@ export function Navbar() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 md:h-20 items-center justify-between">
-          <a href="/" className="flex flex-col leading-tight">
-            <span className={cn("text-lg md:text-xl font-bold font-heading transition-colors", scrolled ? "text-brown-800" : "text-white")}>Vēthā</span>
-            <span className={cn("text-[10px] md:text-xs font-semibold tracking-[3px] transition-colors", scrolled ? "text-brown-600" : "text-white/70")}>YOGALAYA</span>
+          <a href="/" className="flex items-center gap-3">
+            <img src="/vetha_Yogalaya_Logo.png" alt="Vēthā Yogalaya" className={cn("h-10 w-auto transition-all", scrolled ? "" : "brightness-0 invert")} />
+            <div className="flex flex-col leading-tight">
+              <span className={cn("text-base md:text-lg font-bold font-heading transition-colors", scrolled ? "text-brown-800" : "text-white")}>Vēthā</span>
+              <span className={cn("text-[9px] md:text-xs font-semibold tracking-[3px] transition-colors", scrolled ? "text-brown-600" : "text-white/70")}>YOGALAYA</span>
+            </div>
           </a>
 
           <div className="hidden md:flex items-center gap-8">

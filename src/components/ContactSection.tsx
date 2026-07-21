@@ -57,16 +57,17 @@ export function ContactSection() {
               </div>
             </div>
 
-            <div className="mt-6">
-              <a
-                href="https://maps.google.com/?q=12.8445677,80.2152473"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm text-sage hover:underline"
-              >
-                <MapPin className="h-4 w-4" />
-                View on Google Maps
-              </a>
+            <div className="mt-6 rounded-xl overflow-hidden border border-brown-200 shadow-sm">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.1234!2d80.2152473!3d12.8445677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525bff140dde9b%3A0x436c52db29f2bd90!2sVetha%20Yogalaya!5e0!3m2!1sen!2sin!4v1"
+                width="100%"
+                height="220"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Vetha Yogalaya location"
+              />
             </div>
           </motion.div>
 
