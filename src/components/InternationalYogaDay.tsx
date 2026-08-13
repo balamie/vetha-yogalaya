@@ -5,12 +5,12 @@ import { GsapReveal } from "./GsapReveal"
 import { ZoomOverlay, PhotoLightbox } from "./PhotoZoom"
 
 const photos = [
-  { src: "/International_Yoga_Day/Int_Yoga_Cert.jpeg", alt: "Certificate presented at our International Yoga Day celebration" },
-  { src: "/International_Yoga_Day/Int_Yoga_08.jpeg", alt: "Young yogis in pose at International Yoga Day" },
-  { src: "/International_Yoga_Day/Int_Yoga_06.jpeg", alt: "Group yoga practice during International Yoga Day" },
-  { src: "/International_Yoga_Day/Int_Yoga_04.jpeg", alt: "International Yoga Day celebration group moment" },
-  { src: "/International_Yoga_Day/Int_Yoga_10.jpeg", alt: "Participants in a yoga pose at the celebration" },
-  { src: "/International_Yoga_Day/Int_Yoga_01.jpeg", alt: "International Yoga Day celebration group moment" },
+  { src: "/International_Yoga_Day/Int_Yoga_Cert.webp", alt: "Certificate presented at our International Yoga Day celebration" },
+  { src: "/International_Yoga_Day/Int_Yoga_08.webp", alt: "Young yogis in pose at International Yoga Day" },
+  { src: "/International_Yoga_Day/Int_Yoga_06.webp", alt: "Group yoga practice during International Yoga Day" },
+  { src: "/International_Yoga_Day/Int_Yoga_04.webp", alt: "International Yoga Day celebration group moment" },
+  { src: "/International_Yoga_Day/Int_Yoga_10.webp", alt: "Participants in a yoga pose at the celebration" },
+  { src: "/International_Yoga_Day/Int_Yoga_01.webp", alt: "International Yoga Day celebration group moment" },
 ]
 
 export function InternationalYogaDay() {
@@ -27,8 +27,8 @@ export function InternationalYogaDay() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.4 }}
           className="text-center mb-16"
         >
           <span className="text-gold-deep font-semibold text-sm tracking-widest uppercase">Celebration</span>
@@ -46,7 +46,7 @@ export function InternationalYogaDay() {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.05 }}
+              transition={{ duration: 0.35, delay: i * 0.04 }}
               whileHover={{ scale: 1.02 }}
               onClick={() => open(i)}
               aria-label={`View photo: ${photo.alt}`}

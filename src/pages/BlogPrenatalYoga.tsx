@@ -8,7 +8,7 @@ export function BlogPrenatalYoga() {
       date="May 2026"
       author="Vetha Yogalaya Team"
       readTime="8 min read"
-      image="/blog/blog-3.jpg"
+      image="/blog/blog-3.webp"
     >
       <Seo
         title="Yoga During Pregnancy: A Complete Guide | Vetha Yogalaya"

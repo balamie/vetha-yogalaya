@@ -23,8 +23,8 @@ export function BenefitsSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.4 }}
           className="text-center mb-14"
         >
           <span className="text-gold-deep font-semibold text-sm tracking-widest uppercase">The Challenge</span>
@@ -39,8 +39,8 @@ export function BenefitsSection() {
               key={c.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.35, delay: i * 0.04 }}
               whileHover={{ y: -4 }}
               className="flex items-start gap-4 rounded-2xl bg-white p-6 shadow-sm border border-rose/30 transition-all duration-300"
             >

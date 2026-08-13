@@ -52,6 +52,9 @@ const vethaMethod = [
 ]
 
 export function AboutInstructor() {
+  const videoWrapRef = useRef<HTMLDivElement>(null)
+  const aboutInView = useInView(videoWrapRef, { once: true, margin: "400px 0px" })
+
   return (
     <section id="about" className="section-padding bg-cream relative overflow-hidden">
       <div className="absolute -bottom-6 -right-6 opacity-10 hidden lg:block">
@@ -63,20 +66,23 @@ export function AboutInstructor() {
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.4 }}
             className="flex flex-col"
           >
-            <div className="flex-1 rounded-2xl overflow-hidden bg-rose min-h-[320px] relative">
+            <div ref={videoWrapRef} className="flex-1 rounded-2xl overflow-hidden bg-rose min-h-[320px] relative">
               <video
-                src="/about/About_Video02.mp4"
                 autoPlay
                 muted
                 loop
                 playsInline
-                preload="metadata"
+                preload={aboutInView ? "auto" : "none"}
+                poster="/about-poster.webp"
                 className="w-full h-full object-cover"
-              />
+              >
+                {aboutInView && <source src="/about/About_Video02.webm" type="video/webm" />}
+                {aboutInView && <source src="/about/About_Video02.mp4" type="video/mp4" />}
+              </video>
             </div>
 
             <div className="grid grid-cols-2 gap-4 mt-6">
@@ -86,7 +92,7 @@ export function AboutInstructor() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.3 + i * 0.1 }}
+                  transition={{ duration: 0.35, delay: 0.15 + i * 0.06 }}
                   className="bg-white rounded-xl p-5 shadow-sm border border-rose/30 text-center"
                 >
                   <s.icon className="h-5 w-5 text-gold mx-auto mb-2" />
@@ -103,8 +109,8 @@ export function AboutInstructor() {
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.4 }}
             className="flex flex-col"
           >
             <span className="text-gold-deep font-semibold text-sm tracking-widest uppercase">About Us</span>
@@ -132,7 +138,7 @@ export function AboutInstructor() {
                     initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: i * 0.08 }}
+                    transition={{ duration: 0.3, delay: i * 0.05 }}
                     className="flex items-start gap-3"
                   >
                     <span className="h-8 w-8 rounded-full bg-wine text-white flex items-center justify-center text-sm font-bold shrink-0 mt-0.5">

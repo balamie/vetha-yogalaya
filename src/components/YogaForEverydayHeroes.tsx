@@ -6,12 +6,12 @@ import { GsapReveal } from "./GsapReveal"
 import { ZoomOverlay, PhotoLightbox } from "./PhotoZoom"
 
 const photos = [
-  { src: "/Our_Heros/Hero_01.jpeg", alt: "Free yoga session for our everyday heroes" },
-  { src: "/Our_Heros/Hero_02.jpeg", alt: "Community yoga practice outdoors" },
-  { src: "/Our_Heros/Hero_03.jpeg", alt: "Volunteers leading a free yoga class" },
-  { src: "/Our_Heros/Hero_04.jpeg", alt: "Participants enjoying a community yoga session" },
-  { src: "/Our_Heros/Hero_05.jpeg", alt: "Group yoga pose at a community initiative" },
-  { src: "/Our_Heros/Hero_06.jpeg", alt: "Yoga for all — free sessions for the community" },
+  { src: "/Our_Heros/Hero_01.webp", alt: "Free yoga session for our everyday heroes" },
+  { src: "/Our_Heros/Hero_02.webp", alt: "Community yoga practice outdoors" },
+  { src: "/Our_Heros/Hero_03.webp", alt: "Volunteers leading a free yoga class" },
+  { src: "/Our_Heros/Hero_04.webp", alt: "Participants enjoying a community yoga session" },
+  { src: "/Our_Heros/Hero_05.webp", alt: "Group yoga pose at a community initiative" },
+  { src: "/Our_Heros/Hero_06.webp", alt: "Yoga for all — free sessions for the community" },
 ]
 
 export function YogaForEverydayHeroes() {
@@ -28,8 +28,8 @@ export function YogaForEverydayHeroes() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.4 }}
           className="text-center mb-16"
         >
           <span className="text-gold-deep font-semibold text-sm tracking-widest uppercase">Community Initiative</span>
@@ -47,7 +47,7 @@ export function YogaForEverydayHeroes() {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.05 }}
+              transition={{ duration: 0.35, delay: i * 0.04 }}
               whileHover={{ scale: 1.02 }}
               onClick={() => open(i)}
               aria-label={`View photo: ${photo.alt}`}
@@ -68,7 +68,7 @@ export function YogaForEverydayHeroes() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          transition={{ duration: 0.4, delay: 0.15 }}
           className="text-center text-sm italic font-accent text-charcoal-light mt-10 max-w-xl mx-auto flex items-center justify-center gap-2"
         >
           <HandHeart className="h-4 w-4 text-wine" /> Health, harmony & happiness &mdash; for every home.

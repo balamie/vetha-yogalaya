@@ -14,7 +14,7 @@ export function NotFound() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.4 }}
           className="max-w-md text-center"
         >
           <p className="text-6xl font-bold font-heading text-gold-deep mb-4">404</p>

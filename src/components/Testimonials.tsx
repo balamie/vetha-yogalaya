@@ -52,8 +52,8 @@ export function Testimonials() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.4 }}
           className="text-center mb-16"
         >
           <span className="text-gold-deep font-semibold text-sm tracking-widest uppercase">Testimonials</span>
@@ -67,8 +67,8 @@ export function Testimonials() {
               key={t.name}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.35, delay: i * 0.04 }}
               whileHover={{ y: -4, boxShadow: "0 15px 30px rgba(107, 29, 58, 0.08)" }}
               className="rounded-2xl bg-cream p-6 shadow-sm border border-rose/30 transition-all duration-300"
             >

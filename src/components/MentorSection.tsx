@@ -25,15 +25,15 @@ export function MentorSection() {
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.4 }}
             className="lg:col-span-2"
           >
             <div className="relative max-w-sm mx-auto">
               <div className="absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-rose via-transparent to-gold/30 -z-10" />
               <div className="relative rounded-[1.75rem] overflow-hidden shadow-2xl shadow-wine/20">
                 <img
-                  src="/mentor.jpeg"
+                  src="/mentor.webp"
                   alt="Kamalaveni — Founder and Lead Yoga Instructor at Vetha Yogalaya"
                   className="w-full aspect-[4/5] object-cover object-center"
                 />
@@ -55,8 +55,8 @@ export function MentorSection() {
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.4 }}
             className="lg:col-span-3"
           >
             <span className="text-gold-deep font-semibold text-sm tracking-widest uppercase">Meet Your Mentor</span>
@@ -82,7 +82,7 @@ export function MentorSection() {
                   initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: i * 0.08 }}
+                  transition={{ duration: 0.3, delay: i * 0.05 }}
                   className="flex items-center gap-3 rounded-xl bg-rose/50 border border-rose/40 px-4 py-3"
                 >
                   <s.icon className="h-5 w-5 text-wine shrink-0" />
@@ -98,7 +98,7 @@ export function MentorSection() {
                   initial={{ opacity: 0, x: 15 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: i * 0.06 }}
+                  transition={{ duration: 0.3, delay: i * 0.04 }}
                   className="flex items-start gap-2.5 text-sm text-charcoal-light"
                 >
                   <span className="h-1.5 w-1.5 rounded-full bg-gold shrink-0 mt-2" />

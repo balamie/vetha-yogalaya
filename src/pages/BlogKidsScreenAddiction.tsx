@@ -8,7 +8,7 @@ export function BlogKidsScreenAddiction() {
       date="July 2026"
       author="Vetha Yogalaya Team"
       readTime="6 min read"
-      image="/blog/blog-1.jpg"
+      image="/blog/blog-1.webp"
     >
       <Seo
         title="5 Ways Yoga Helps Kids Beat Screen Addiction | Vetha Yogalaya"

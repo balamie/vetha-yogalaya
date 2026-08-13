@@ -11,7 +11,7 @@ const posts = [
     excerpt: "Discover how just 30 minutes of daily yoga can rewire your child's relationship with screens and build lasting focus.",
     date: "July 2026",
     author: "Vetha Yogalaya Team",
-    image: "/blog/blog-1.jpg",
+    image: "/blog/blog-1.webp",
     category: "Kids Yoga",
     slug: "/blog/kids-screen-addiction",
   },
@@ -20,7 +20,7 @@ const posts = [
     excerpt: "Research shows that pranayama techniques can improve concentration by up to 40% in school-age children. Here's how.",
     date: "June 2026",
     author: "Vetha Yogalaya Team",
-    image: "/blog/blog-2.jpg",
+    image: "/blog/blog-2.webp",
     category: "Mindfulness",
     slug: "/blog/breathing-science",
   },
@@ -29,7 +29,7 @@ const posts = [
     excerpt: "Safe poses, breathing techniques, and the benefits of prenatal yoga for a calm pregnancy and smoother delivery.",
     date: "May 2026",
     author: "Vetha Yogalaya Team",
-    image: "/blog/blog-3.jpg",
+    image: "/blog/blog-3.webp",
     category: "Prenatal",
     slug: "/blog/prenatal-yoga-guide",
   },
@@ -47,8 +47,8 @@ export function BlogSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.4 }}
           className="text-center mb-16"
         >
           <span className="text-gold-deep font-semibold text-sm tracking-widest uppercase">Blog</span>
@@ -62,8 +62,8 @@ export function BlogSection() {
               key={post.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.4, delay: i * 0.06 }}
               whileHover={{ y: -5 }}
               className="group rounded-2xl bg-cream overflow-hidden shadow-sm border border-rose/30 transition-all duration-300"
             >

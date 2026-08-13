@@ -25,7 +25,7 @@ const programs: Program[] = [
     ages: "Ages 4–9",
     levels: "2 Levels, 90 Days Each",
     tagline: "Growing Healthy Bodies & Happy Minds",
-    image: "/programs/Young_Yogis.jpeg",
+    image: "/programs/Young_Yogis.webp",
     cta: "Enquire Now",
     challenges: [
       "My child finds it difficult to sit calmly, even for a few minutes.",
@@ -108,7 +108,7 @@ const programs: Program[] = [
     ages: "Ages 10–15",
     levels: "2 Levels, 90 Days Each",
     tagline: "Build Strong Habits. Build Strong Minds.",
-    image: "/programs/kids-youth.jpg",
+    image: "/programs/kids-youth.webp",
     cta: "Enquire Now",
     challenges: [
       "Difficulty focusing on studies and daily tasks",
@@ -201,7 +201,7 @@ const programs: Program[] = [
     ages: "Ages 25–60",
     levels: "1 Level, 90 Days",
     tagline: "Transform Stress, Stiffness & Fatigue into Strength, Flexibility & Well-being",
-    image: "/programs/adult.jpeg",
+    image: "/programs/adult.webp",
     cta: "Enquire Now",
     challenges: [
       "Lack of Physical Fitness & Flexibility",
@@ -251,7 +251,7 @@ const programs: Program[] = [
     ages: "60+ Years",
     levels: "1 Level, 90 Days",
     tagline: "Move with Ease. Live with Confidence. Age with Grace.",
-    image: "/programs/golden.jpg",
+    image: "/programs/golden.webp",
     cta: "Enquire Now",
     challenges: [
       "Reduced flexibility and mobility",
@@ -301,7 +301,7 @@ const programs: Program[] = [
     ages: "Prenatal & Postnatal",
     levels: "Custom Duration",
     tagline: "Nurturing the Mother, Nurturing the Baby, Nurturing Life.",
-    image: "/programs/prenatal.jpg",
+    image: "/programs/prenatal.webp",
     cta: "Enquire Now",
     challenges: [
       "Physical fatigue and low energy",
@@ -480,8 +480,8 @@ export function ProgramsSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.4 }}
           className="text-center mb-8 sm:mb-10"
         >
           <span className="text-gold-deep font-semibold text-sm tracking-widest uppercase">Our Programs</span>
@@ -500,8 +500,8 @@ export function ProgramsSection() {
                 key={p.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.4, delay: i * 0.06 }}
                 whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(107, 29, 58, 0.1)" }}
                 className="group rounded-2xl bg-white overflow-hidden shadow-sm border border-rose/30 transition-all duration-300 flex flex-col"
               >

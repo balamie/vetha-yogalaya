@@ -24,8 +24,8 @@ export function FreeSession() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.4 }}
           >
             <span className="text-gold font-semibold text-sm tracking-widest uppercase">Try Before You Commit</span>
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold font-heading text-white mt-3">
@@ -42,8 +42,8 @@ export function FreeSession() {
                 key={step.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.5, delay: 0.2 + i * 0.15 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.4, delay: i * 0.08 }}
                 whileHover={{ y: -5 }}
                 className="rounded-xl bg-white/10 backdrop-blur-sm p-5 sm:p-6 border border-white/20"
               >
@@ -57,8 +57,8 @@ export function FreeSession() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6, delay: 0.6 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.4, delay: 0.15 }}
             className="mt-6 sm:mt-10"
           >
             <a href="#contact" className="inline-flex items-center rounded-full bg-gold text-wine-deep px-10 py-4 text-base font-heading font-semibold hover:bg-gold-light transition-colors shadow-lg shadow-gold/30">

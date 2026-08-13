@@ -5,12 +5,12 @@ import { GsapReveal } from "./GsapReveal"
 import { ZoomOverlay, PhotoLightbox } from "./PhotoZoom"
 
 const photos = [
-  { src: "/Students_Achievements/Stud_Achieve_03.jpeg", alt: "Student achievement certificate proudly held" },
-  { src: "/Students_Achievements/Stud_Achieve_11.jpeg", alt: "Young yogi celebrating an achievement milestone" },
-  { src: "/Students_Achievements/Stud_Achieve_04.jpeg", alt: "Student with their yoga achievement certificate" },
-  { src: "/Students_Achievements/Stud_Achieve_05.jpeg", alt: "Proud moment captured after a student milestone" },
-  { src: "/Students_Achievements/Stud_Achieve_10.jpeg", alt: "Yoga student achievement photo" },
-  { src: "/Students_Achievements/Stud_Achieve_07.jpeg", alt: "Certification celebration at Vetha Yogalaya" },
+  { src: "/Students_Achievements/Stud_Achieve_03.webp", alt: "Student achievement certificate proudly held" },
+  { src: "/Students_Achievements/Stud_Achieve_11.webp", alt: "Young yogi celebrating an achievement milestone" },
+  { src: "/Students_Achievements/Stud_Achieve_04.webp", alt: "Student with their yoga achievement certificate" },
+  { src: "/Students_Achievements/Stud_Achieve_05.webp", alt: "Proud moment captured after a student milestone" },
+  { src: "/Students_Achievements/Stud_Achieve_10.webp", alt: "Yoga student achievement photo" },
+  { src: "/Students_Achievements/Stud_Achieve_07.webp", alt: "Certification celebration at Vetha Yogalaya" },
 ]
 
 export function AchievementsSection() {
@@ -27,8 +27,8 @@ export function AchievementsSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.4 }}
           className="text-center mb-16"
         >
           <span className="text-gold-deep font-semibold text-sm tracking-widest uppercase">Achievements</span>
@@ -46,7 +46,7 @@ export function AchievementsSection() {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.05 }}
+              transition={{ duration: 0.35, delay: i * 0.04 }}
               whileHover={{ scale: 1.02 }}
               onClick={() => open(i)}
               aria-label={`View photo: ${photo.alt}`}

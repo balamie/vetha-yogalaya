@@ -4,12 +4,12 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react"
 import { GsapReveal } from "./GsapReveal"
 
 const galleryItems = [
-  { src: "/Gallery/gallery-1.jpeg", alt: "Kids practicing yoga at Vetha Yogalaya" },
-  { src: "/Gallery/gallery-2.jpeg", alt: "Yoga session at Vetha Yogalaya studio" },
-  { src: "/Gallery/gallery-3.jpeg", alt: "Children in yoga class" },
-  { src: "/Gallery/gallery-4.jpeg", alt: "Group yoga activity" },
-  { src: "/Gallery/gallery-5.jpeg", alt: "Yoga practice session" },
-  { src: "/Gallery/gallery-6.jpeg", alt: "Studio life at Vetha Yogalaya" },
+  { src: "/Gallery/gallery-1.webp", alt: "Kids practicing yoga at Vetha Yogalaya" },
+  { src: "/Gallery/gallery-2.webp", alt: "Yoga session at Vetha Yogalaya studio" },
+  { src: "/Gallery/gallery-3.webp", alt: "Children in yoga class" },
+  { src: "/Gallery/gallery-4.webp", alt: "Group yoga activity" },
+  { src: "/Gallery/gallery-5.webp", alt: "Yoga practice session" },
+  { src: "/Gallery/gallery-6.webp", alt: "Studio life at Vetha Yogalaya" },
 ]
 
 export function GallerySection() {
@@ -37,8 +37,8 @@ export function GallerySection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.4 }}
           className="text-center mb-16"
         >
           <span className="text-gold-deep font-semibold text-sm tracking-widest uppercase">Gallery</span>
@@ -54,7 +54,7 @@ export function GallerySection() {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.05 }}
+              transition={{ duration: 0.35, delay: i * 0.04 }}
               whileHover={{ scale: 1.02 }}
               onClick={() => openLightbox(i)}
               aria-label={`View photo: ${item.alt}`}
@@ -103,7 +103,7 @@ export function GallerySection() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
-              src={galleryItems[selected].src.replace("w=800", "w=1200")}
+              src={galleryItems[selected].src}
               alt={galleryItems[selected].alt}
               className="max-w-full max-h-[85vh] object-contain rounded-lg"
               onClick={(e) => e.stopPropagation()}

@@ -6,12 +6,12 @@ import { MeditationFigure } from "./YogaLineArt"
 import { ZoomOverlay, PhotoLightbox } from "./PhotoZoom"
 
 const photos = [
-  { src: "/Senior%20Citizen/Senior%20Citizen%200.jpeg", alt: "Senior citizens enjoying a gentle yoga session at Vetha Yogalaya" },
-  { src: "/Senior%20Citizen/Senior%20Citizen%201.jpeg", alt: "Senior yoga class with seated and balance postures" },
-  { src: "/Senior%20Citizen/Senior%20Citizen%202.jpeg", alt: "Elderly students practicing stretching exercises together" },
-  { src: "/Senior%20Citizen/Senior%20Citizen%203.jpeg", alt: "Seniors in relaxation and breathing practice" },
-  { src: "/Senior%20Citizen/Senior%20Citizen%204.jpeg", alt: "Group yoga practice for senior citizens" },
-  { src: "/Senior%20Citizen/Senior%20Citizen%205.jpeg", alt: "Happy seniors after a yoga session at the studio" },
+  { src: "/Senior%20Citizen/Senior%20Citizen%200.webp", alt: "Senior citizens enjoying a gentle yoga session at Vetha Yogalaya" },
+  { src: "/Senior%20Citizen/Senior%20Citizen%201.webp", alt: "Senior yoga class with seated and balance postures" },
+  { src: "/Senior%20Citizen/Senior%20Citizen%202.webp", alt: "Elderly students practicing stretching exercises together" },
+  { src: "/Senior%20Citizen/Senior%20Citizen%203.webp", alt: "Seniors in relaxation and breathing practice" },
+  { src: "/Senior%20Citizen/Senior%20Citizen%204.webp", alt: "Group yoga practice for senior citizens" },
+  { src: "/Senior%20Citizen/Senior%20Citizen%205.webp", alt: "Happy seniors after a yoga session at the studio" },
 ]
 
 const highlights = [
@@ -64,8 +64,8 @@ export function SeniorCitizenSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.4 }}
           className="text-center mb-10 sm:mb-14"
         >
           <span className="text-gold-deep font-semibold text-sm tracking-widest uppercase">Golden Yogis</span>
@@ -82,7 +82,7 @@ export function SeniorCitizenSection() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
+              transition={{ duration: 0.35, delay: i * 0.06 }}
               className="bg-white rounded-xl p-5 shadow-sm border border-rose/30 flex items-start gap-4"
             >
               <div className="h-11 w-11 rounded-full bg-rose flex items-center justify-center shrink-0">
@@ -99,8 +99,8 @@ export function SeniorCitizenSection() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.4 }}
           className="relative rounded-2xl overflow-hidden bg-wine-deep shadow-xl aspect-[4/3] md:aspect-[16/9]"
         >
           <AnimatePresence mode="popLayout" initial={false}>
@@ -110,7 +110,7 @@ export function SeniorCitizenSection() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.4 }}
               onClick={() => open(index)}
               aria-label={`View photo full size: ${photos[index].alt}`}
               className="absolute inset-0 w-full h-full cursor-pointer p-0 text-left"

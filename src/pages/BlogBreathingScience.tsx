@@ -8,7 +8,7 @@ export function BlogBreathingScience() {
       date="June 2026"
       author="Vetha Yogalaya Team"
       readTime="7 min read"
-      image="/blog/blog-2.jpg"
+      image="/blog/blog-2.webp"
     >
       <Seo
         title="The Science Behind Breathing Exercises for Children | Vetha Yogalaya"

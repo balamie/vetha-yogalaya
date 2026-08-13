@@ -12,16 +12,34 @@
 /hero-video.mp4
   Cache-Control: public, max-age=86400
 
+/hero-video.webm
+  Cache-Control: public, max-age=86400
+
+/hero-poster.webp
+  Cache-Control: public, max-age=86400
+
 /about/About_Video02.mp4
+  Cache-Control: public, max-age=86400
+
+/about/About_Video02.webm
+  Cache-Control: public, max-age=86400
+
+/about-poster.webp
   Cache-Control: public, max-age=86400
 
 /vetha_Yogalaya_Logo.png
   Cache-Control: public, max-age=86400
 
+/icon-192.png
+  Cache-Control: public, max-age=86400
+
+/icon-512.png
+  Cache-Control: public, max-age=86400
+
 /og-image.png
   Cache-Control: public, max-age=86400
 
-/mentor.jpeg
+/mentor.webp
   Cache-Control: public, max-age=86400
 
 /icons.svg

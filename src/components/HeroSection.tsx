@@ -19,7 +19,7 @@ export function HeroSection() {
           char.style.transition = "opacity 0.4s ease, transform 0.4s ease"
           char.style.opacity = "1"
           char.style.transform = "translateY(0)"
-        }, 600 + i * 30)
+        }, 300 + i * 18)
       })
 
       return () => split.revert()
@@ -33,8 +33,8 @@ export function HeroSection() {
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          className="max-w-5xl lg:max-w-lg lg:bg-gradient-to-r lg:from-gray-800/60 lg:via-gray-800/40 lg:to-gray-800/15 lg:rounded-3xl lg:p-7 lg:shadow-xl lg:ring-1 lg:ring-white/10"
+          transition={{ duration: 0.4 }}
+          className="max-w-5xl bg-gradient-to-r from-gray-800/60 via-gray-800/40 to-gray-800/15 rounded-3xl p-7 shadow-xl ring-1 ring-white/10 lg:max-w-lg"
         >
           <span className="inline-flex items-center gap-2 text-white font-semibold text-xs tracking-widest uppercase mb-2">
             <span className="h-2 w-2 rounded-full bg-gold" />
@@ -43,7 +43,7 @@ export function HeroSection() {
 
           <h1
             ref={headlineRef}
-            className="text-[clamp(1.75rem,calc(3vw+0.9rem),3rem)] font-bold font-heading text-wine leading-[1.15] mb-3 text-balance"
+            className="text-[clamp(1.75rem,calc(3vw+0.9rem),3rem)] font-bold font-heading text-white leading-[1.15] mb-3 text-balance"
           >
             Healthy Body, Happy Mind, <span className="text-gold underline decoration-gold-deep decoration-2 underline-offset-8">Focused Life</span>
           </h1>
@@ -67,15 +67,15 @@ export function HeroSection() {
           {/* Trust Signals */}
           <div className="mt-4 w-full flex flex-wrap items-center justify-center gap-x-6 sm:gap-x-8 gap-y-3 text-sm sm:text-base text-white">
             <div className="flex items-center gap-2 whitespace-nowrap">
-              <svg className="h-5 w-5 lg:h-6 lg:w-6 text-wine" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <svg className="h-5 w-5 lg:h-6 lg:w-6 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
               <span>5+ Years Experience</span>
             </div>
             <div className="flex items-center gap-2 whitespace-nowrap">
-              <svg className="h-5 w-5 lg:h-6 lg:w-6 text-wine" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <svg className="h-5 w-5 lg:h-6 lg:w-6 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
               <span>100+ Happy Families</span>
             </div>
             <div className="flex items-center gap-2 whitespace-nowrap">
-              <svg className="h-5 w-5 lg:h-6 lg:w-6 text-wine" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg className="h-5 w-5 lg:h-6 lg:w-6 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
               <span>Trusted by Parents</span>
             </div>
           </div>
@@ -86,7 +86,7 @@ export function HeroSection() {
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
+        transition={{ duration: 0.4, delay: 0.1 }}
         className="relative flex-1 min-h-[200px] sm:min-h-[260px] lg:absolute lg:inset-0 lg:min-h-0 lg:flex-none lg:z-0"
       >
           <div className="absolute inset-0 overflow-hidden rounded-2xl shadow-2xl lg:rounded-none lg:shadow-none">
@@ -96,9 +96,11 @@ export function HeroSection() {
               muted
               playsInline
               preload="metadata"
+              poster="/hero-poster.webp"
               disablePictureInPicture
               className="w-full h-full object-cover"
             >
+              <source src="/hero-video.webm" type="video/webm" />
               <source src="/hero-video.mp4" type="video/mp4" />
             </video>
             <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-black/10 via-black/5 to-transparent" />

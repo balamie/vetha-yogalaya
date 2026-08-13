@@ -34,11 +34,11 @@ export function BlogPost({ title, date, author, readTime, image, children }: Blo
         <motion.article
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.4 }}
         >
           <div className="rounded-2xl overflow-hidden mb-8 shadow-sm group">
             <button type="button" onClick={open} aria-label={`View image: ${title}`} className="relative block w-full h-full group/photo cursor-pointer p-0 text-left">
-              <img src={image} alt={title} className="w-full h-64 sm:h-80 md:h-96 object-cover" />
+              <img src={image} alt={title} width={1152} height={768} fetchPriority="high" className="w-full h-64 sm:h-80 md:h-96 object-cover" />
               <ZoomOverlay />
             </button>
           </div>

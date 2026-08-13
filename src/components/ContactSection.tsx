@@ -73,8 +73,8 @@ export function ContactSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.4 }}
           className="text-center mb-16"
         >
           <span className="text-gold-deep font-semibold text-sm tracking-widest uppercase">Contact</span>
@@ -88,8 +88,8 @@ export function ContactSection() {
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.4 }}
           >
             <div className="space-y-5 mb-8">
               {contactInfo.map((c, i) => (
@@ -98,7 +98,7 @@ export function ContactSection() {
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.1 }}
+                  transition={{ duration: 0.35, delay: i * 0.06 }}
                   className="flex items-start gap-4"
                 >
                   <div className="h-10 w-10 rounded-full bg-rose flex items-center justify-center shrink-0 mt-0.5">
@@ -145,8 +145,8 @@ export function ContactSection() {
           <motion.form
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.4 }}
             onSubmit={handleSubmit}
             className="rounded-2xl bg-cream p-8 shadow-sm border border-rose/30"
           >
