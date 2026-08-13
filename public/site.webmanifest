@@ -1,0 +1,21 @@
+{
+  "name": "Vetha Yogalaya",
+  "short_name": "Vetha Yogalaya",
+  "description": "Kids Focus Yoga in OMR, Chennai. Helping children beat screen addiction & distraction through yoga.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FDF8F4",
+  "theme_color": "#6B1D3A",
+  "icons": [
+    {
+      "src": "/vetha_Yogalaya_Logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/vetha_Yogalaya_Logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

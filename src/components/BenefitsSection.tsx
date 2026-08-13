@@ -1,47 +1,62 @@
 import { motion } from "framer-motion"
-import { Heart, Wind, Users, Sparkles } from "lucide-react"
+import { Smartphone, Brain, Mic, Activity, Crosshair, HeartPulse } from "lucide-react"
+import { BreathingIcon } from "./YogaLineArt"
+import { GsapReveal } from "./GsapReveal"
 
-const benefits = [
-  { icon: Heart, title: "Beat Screen Addiction", desc: "Replace passive screen time with active, mindful movement that engages both body and mind." },
-  { icon: Wind, title: "Build Focus & Calm", desc: "Yoga and breathing exercises that improve concentration, memory, and emotional regulation in children." },
-  { icon: Users, title: "Fun Group Sessions", desc: "Kids learn better together. Our small group classes make yoga a joyful social experience." },
-  { icon: Sparkles, title: "Screen-Free Fun", desc: "Engaging, hands-on activities that prove movement is more entertaining than any device." },
+const challenges = [
+  { icon: Smartphone, title: "Excessive Screen Time and Digital Addiction" },
+  { icon: Brain, title: "Weak Memory and Learning Retention" },
+  { icon: Mic, title: "Low Self-Confidence and Communication Skills" },
+  { icon: Activity, title: "Poor Posture and Reduced Physical Activity" },
+  { icon: Crosshair, title: "Lack of Focus and Concentration while studying" },
+  { icon: HeartPulse, title: "Stress, Anxiety, and Emotional Imbalance" },
 ]
 
 export function BenefitsSection() {
   return (
-    <section className="section-padding bg-warm">
+    <section className="section-padding bg-cream relative overflow-hidden">
+      <div className="absolute top-10 right-10 opacity-10 hidden lg:block">
+        <BreathingIcon className="w-32 h-32 text-wine" />
+      </div>
+
       <div className="container-wide">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-14"
         >
-          <span className="text-sage font-semibold text-sm tracking-widest uppercase">Why Vēthā</span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading text-brown-800 mt-4">Why Kids Love Vēthā</h2>
-          <p className="text-brown-600 mt-4 max-w-xl mx-auto">Screen-free fun that builds focus, calm, and confidence — naturally.</p>
+          <span className="text-gold-deep font-semibold text-sm tracking-widest uppercase">The Challenge</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading text-wine mt-4 max-w-4xl mx-auto">
+            Why Are So Many Children <span className="block">Struggling With Focus Today?</span>
+          </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {benefits.map((b, i) => (
+        <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {challenges.map((c, i) => (
             <motion.div
-              key={b.title}
+              key={c.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group rounded-2xl bg-white p-8 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1"
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              whileHover={{ y: -4 }}
+              className="flex items-start gap-4 rounded-2xl bg-white p-6 shadow-sm border border-rose/30 transition-all duration-300"
             >
-              <div className="h-12 w-12 rounded-xl bg-sage/10 flex items-center justify-center mb-5 group-hover:bg-sage/20 transition-colors">
-                <b.icon className="h-6 w-6 text-sage" />
+              <div className="h-11 w-11 rounded-xl bg-rose flex items-center justify-center shrink-0">
+                <c.icon className="h-5 w-5 text-wine" />
               </div>
-              <h3 className="text-lg font-semibold text-brown-800 mb-3">{b.title}</h3>
-              <p className="text-sm text-brown-600 leading-relaxed">{b.desc}</p>
+              <p className="text-charcoal-light font-medium leading-relaxed">{c.title}</p>
             </motion.div>
           ))}
         </div>
+
+        <GsapReveal className="text-center text-base sm:text-lg font-heading font-medium text-wine mt-10 max-w-4xl mx-auto leading-relaxed">
+          <span className="block">Many of these challenges arise from poor posture, improper breathing patterns, and overstimulation of the mind.</span>
+          <span className="block">With the right combination of yoga, mindfulness, and healthy daily practices,</span>
+          <span className="block">children can naturally enhance concentration, memory, confidence, and emotional stability.</span>
+        </GsapReveal>
       </div>
     </section>
   )

@@ -11,6 +11,12 @@ node_modules
 dist
 dist-ssr
 *.local
+.env
+.env.*
+!.env.example
+
+# Customer lead exports (PII — never commit or serve)
+public/Leads/
 
 # Editor directories and files
 .vscode/*

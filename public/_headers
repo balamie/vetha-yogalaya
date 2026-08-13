@@ -1,8 +1,25 @@
 /*
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://fonts.googleapis.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://fonts.googleapis.com https://www.google-analytics.com https://stats.g.doubleclick.net https://connect.facebook.net https://formspree.io; frame-src 'self' https://www.google.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
 
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
+
+/hero-video.mp4
+/about/About_Video02.mp4
+/vetha_Yogalaya_Logo.png
+/og-image.png
+/mentor.jpeg
+/icons.svg
+/programs/*
+/Gallery/*
+/blog/*
+/Our_Heros/*
+/International_Yoga_Day/*
+/Students_Achievements/*
+/Senior Citizen/*
+  Cache-Control: public, max-age=86400

@@ -1,30 +1,49 @@
 @import "tailwindcss";
 
 @theme {
-  --color-cream: #faf7f2;
-  --color-sand: #f0ebe1;
-  --color-warm: #f5f0ea;
-  --color-sage: #7a9e89;
-  --color-terracotta: #c1694f;
-  --color-terracotta-dark: #a8553b;
-  --color-gold: #c4a04a;
-  --color-olive: #6b8f71;
-  --color-brown-900: #2d1f14;
-  --color-brown-800: #4a3525;
-  --color-brown-600: #8b7355;
-  --color-brown-400: #b8a389;
-  --color-brown-200: #e2dad3;
-  --font-heading: "Playfair Display", Georgia, serif;
-  --font-body: "Inter", system-ui, sans-serif;
+  --color-wine: #6B1D3A;
+  --color-wine-deep: #4A1128;
+  --color-wine-light: #8B2E52;
+  --color-rose: #F5E6EB;
+  --color-rose-dark: #E8C4CE;
+  --color-cream: #FDF8F4;
+  --color-cream-dark: #F5EDE4;
+  --color-gold: #C9A84C;
+  --color-gold-light: #D4BC6E;
+  --color-gold-deep: #8A6B2E;
+  --color-sage: #8FAE8B;
+  --color-sage-dark: #6B8E67;
+  --color-white: #FFFFFF;
+  --color-charcoal: #2C1A1E;
+  --color-charcoal-light: #4A3035;
+  --font-heading: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Open Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-accent: "Playfair Display", Georgia, serif;
 }
 
 body {
   margin: 0;
-  color: var(--color-brown-800);
+  color: var(--color-charcoal);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: var(--color-cream);
+}
+
+html {
+  scroll-padding-top: 5.75rem;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold-deep);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (min-width: 768px) {
+  html {
+    scroll-padding-top: 7.5rem;
+  }
 }
 
 .section-padding {
@@ -33,4 +52,15 @@ body {
 
 .container-wide {
   @apply mx-auto max-w-7xl;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
