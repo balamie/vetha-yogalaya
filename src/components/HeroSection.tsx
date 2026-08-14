@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 import { motion } from "framer-motion"
 import SplitType from "split-type"
 import { Play, ChevronRight } from "lucide-react"
@@ -6,14 +6,6 @@ import { GsapReveal } from "./GsapReveal"
 
 export function HeroSection() {
   const headlineRef = useRef<HTMLHeadingElement>(null)
-  const [videoOn, setVideoOn] = useState(true)
-
-  useEffect(() => {
-    const nav = navigator as Navigator & { connection?: { saveData?: boolean } }
-    if (window.matchMedia("(max-width: 767px)").matches || nav.connection?.saveData) {
-      setVideoOn(false)
-    }
-  }, [])
 
   useEffect(() => {
     if (headlineRef.current && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -104,21 +96,19 @@ export function HeroSection() {
               aria-hidden
               className="hero-poster-zoom absolute inset-0 h-full w-full object-cover"
             />
-            {videoOn && (
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="metadata"
-                poster="/hero-poster.webp"
-                disablePictureInPicture
-                className="w-full h-full object-cover"
-              >
-                <source src="/hero-video.webm" type="video/webm" />
-                <source src="/hero-video.mp4" type="video/mp4" />
-              </video>
-            )}
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+              poster="/hero-poster.webp"
+              disablePictureInPicture
+              className="w-full h-full object-cover"
+            >
+              <source src="/hero-video.webm" type="video/webm" />
+              <source src="/hero-video.mp4" type="video/mp4" />
+            </video>
             <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-black/10 via-black/5 to-transparent" />
             <a
               href="https://www.vecteezy.com/free-videos/yoga"
