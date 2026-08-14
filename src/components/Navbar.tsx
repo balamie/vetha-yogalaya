@@ -82,7 +82,7 @@ export function Navbar() {
           </a>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden xl:flex items-center gap-8">
             {links.map((l) => (
               <a
                 key={l.href}
@@ -106,15 +106,13 @@ export function Navbar() {
                 <FacebookIcon />
               </a>
             </div>
-            <a href="#free-session" className="group relative overflow-hidden rounded-full bg-gradient-to-b from-wine-light via-wine to-wine-deep px-6 py-3 text-sm font-heading font-semibold text-white hover:brightness-110 active:scale-[0.98] transition-all shadow-lg shadow-wine/30">
-              <span className="absolute inset-x-0 top-0 h-1/2 bg-white/25 rounded-t-full pointer-events-none" />
-              <span className="absolute -inset-x-8 -top-10 h-16 rotate-12 bg-white/10 blur-md group-hover:translate-x-24 transition-transform duration-700 pointer-events-none" />
+            <a href="#free-session" className="inline-flex items-center rounded-full bg-wine px-6 py-3 text-sm font-heading font-semibold text-white hover:bg-wine-light transition-colors shadow-lg shadow-wine/20">
               Book a Free Trial Class
             </a>
           </div>
 
           {/* Mobile Menu Button */}
-          <button className="lg:hidden p-3 -mr-2" onClick={() => setOpen(!open)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open}>
+          <button className="xl:hidden p-3 -mr-2" onClick={() => setOpen(!open)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open}>
             {open ? <X className="h-6 w-6 text-wine" /> : <Menu className="h-6 w-6 text-wine" />}
           </button>
         </div>
@@ -127,7 +125,7 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-cream border-t border-rose-dark/30 overflow-hidden"
+            className="xl:hidden bg-cream border-t border-rose-dark/30 overflow-hidden"
           >
             <div className="px-6 py-6 space-y-4">
               {links.map((l) => (
@@ -141,8 +139,7 @@ export function Navbar() {
                   <FacebookIcon />
                 </a>
               </div>
-              <a href="#free-session" onClick={() => setOpen(false)} className="group relative overflow-hidden rounded-full bg-gradient-to-b from-wine-light via-wine to-wine-deep px-6 py-3 text-sm font-heading font-semibold text-white">
-                <span className="absolute inset-x-0 top-0 h-1/2 bg-white/25 rounded-t-full pointer-events-none" />
+              <a href="#free-session" onClick={() => setOpen(false)} className="inline-flex items-center rounded-full bg-wine px-6 py-3 text-sm font-heading font-semibold text-white hover:bg-wine-light transition-colors">
                 Book a Free Trial Class
               </a>
             </div>

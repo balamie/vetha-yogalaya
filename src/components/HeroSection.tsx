@@ -34,7 +34,7 @@ export function HeroSection() {
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.4 }}
-          className="max-w-5xl bg-gradient-to-r from-gray-800/60 via-gray-800/40 to-gray-800/15 rounded-3xl p-7 shadow-xl ring-1 ring-white/10 lg:max-w-lg"
+          className="max-w-5xl bg-gradient-to-r from-wine/70 via-wine/45 to-wine/15 rounded-3xl p-7 shadow-xl ring-1 ring-white/10 lg:max-w-lg"
         >
           <span className="inline-flex items-center gap-2 text-white font-semibold text-xs tracking-widest uppercase mb-2">
             <span className="h-2 w-2 rounded-full bg-gold" />
