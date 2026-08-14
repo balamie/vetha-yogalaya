@@ -104,7 +104,7 @@ export function HeroSection() {
               preload="metadata"
               poster="/hero-poster.webp"
               disablePictureInPicture
-              className="w-full h-full object-cover"
+              className="relative w-full h-full object-cover"
             >
               <source src="/hero-video.webm" type="video/webm" />
               <source src="/hero-video.mp4" type="video/mp4" />
