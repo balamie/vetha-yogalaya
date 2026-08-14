@@ -22,7 +22,7 @@ const InstagramIcon = ({ className }: { className?: string }) => (
 
 const contactInfo = [
   { icon: MapPin, label: "Visit Us", value: "Casagrand Supremus, Block-5, B 105\nThazhambur, OMR, Chennai 600130", href: "https://maps.google.com/?q=Casagrand+Supremus+Thazhambur+Chennai" },
-  { icon: Clock, label: "Studio Hours", value: "Mon-Sun: 8:30 AM – 5:00 PM" },
+  { icon: Clock, label: "Studio Hours", value: "Mon-Sun: 8:00 AM – 8:00 PM" },
   { icon: Phone, label: "WhatsApp", value: "+91 75501 48784", href: "https://wa.me/917550148784?text=Hi%2C%20I%27m%20interested%20in%20yoga%20classes%20at%20Vetha%20Yogalaya." },
   { icon: Mail, label: "Email", value: "vethayogalaya@gmail.com", href: "mailto:vethayogalaya@gmail.com" },
   { icon: InstagramIcon, label: "Instagram", value: "@vetha_yogalaya", href: "https://www.instagram.com/vetha_yogalaya/" },
@@ -31,6 +31,7 @@ const contactInfo = [
 export function ContactSection() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", program: "", message: "", honeypot: "" })
   const [status, setStatus] = useState<"idle" | "sending" | "success">("idle")
+  const [mapActive, setMapActive] = useState(false)
 
   const update = (key: keyof typeof form) => (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -128,12 +129,23 @@ export function ContactSection() {
             </a>
 
             {/* Google Map */}
-            <div className="rounded-xl overflow-hidden border border-rose-dark/30 shadow-sm">
+            <div className="relative rounded-xl overflow-hidden border border-rose-dark/30 shadow-sm">
+              {!mapActive && (
+                <button
+                  type="button"
+                  onClick={() => setMapActive(true)}
+                  aria-label="Enable interactive map"
+                  className="absolute inset-0 z-10 flex items-center justify-center bg-white/80 text-sm font-semibold text-wine"
+                >
+                  <MapPin className="h-4 w-4 mr-2" />
+                  Tap to view map
+                </button>
+              )}
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.1234!2d80.2152473!3d12.8445677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525bff140dde9b%3A0x436c52db29f2bd90!2sVetha%20Yogalaya!5e0!3m2!1sen!2sin!4v1"
                 width="100%"
                 height="250"
-                style={{ border: 0 }}
+                style={{ border: 0, pointerEvents: mapActive ? "auto" : "none" }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"

@@ -109,7 +109,7 @@ export function MentorSection() {
 
             <div className="mt-10 flex flex-wrap gap-4">
               <a href="#free-session" className="inline-flex items-center rounded-full bg-wine px-8 py-4 text-base font-heading font-semibold text-white hover:bg-wine-light transition-colors shadow-lg shadow-wine/20">
-                Book a Free Trial
+                Book a Free Trial Class
               </a>
               <a href="#contact" className="inline-flex items-center rounded-full border border-wine/30 text-wine px-8 py-4 text-base font-heading font-medium hover:bg-wine/5 transition-colors">
                 Get in Touch

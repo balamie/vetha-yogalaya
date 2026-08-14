@@ -54,6 +54,19 @@ html {
   @apply mx-auto max-w-7xl;
 }
 
+.hero-poster-zoom {
+  animation: hero-kenburns 8s ease-out forwards;
+}
+
+@keyframes hero-kenburns {
+  from {
+    transform: scale(1.02);
+  }
+  to {
+    transform: scale(1.12);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

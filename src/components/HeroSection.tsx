@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
 import SplitType from "split-type"
 import { Play, ChevronRight } from "lucide-react"
@@ -6,6 +6,14 @@ import { GsapReveal } from "./GsapReveal"
 
 export function HeroSection() {
   const headlineRef = useRef<HTMLHeadingElement>(null)
+  const [videoOn, setVideoOn] = useState(true)
+
+  useEffect(() => {
+    const nav = navigator as Navigator & { connection?: { saveData?: boolean } }
+    if (window.matchMedia("(max-width: 767px)").matches || nav.connection?.saveData) {
+      setVideoOn(false)
+    }
+  }, [])
 
   useEffect(() => {
     if (headlineRef.current && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -56,7 +64,7 @@ export function HeroSection() {
           <div className="flex flex-wrap gap-3 sm:gap-4">
             <a href="#free-session" className="inline-flex items-center rounded-full bg-wine px-6 sm:px-8 py-3 sm:py-4 text-xs sm:text-sm font-heading font-semibold text-white hover:bg-wine-light transition-colors shadow-lg shadow-wine/20">
               <Play className="mr-2 h-4 w-4" />
-              Book a Trial Class
+              Book a Free Trial Class
             </a>
             <a href="#programs" className="inline-flex items-center rounded-full border border-white/40 text-white px-6 sm:px-8 py-3 sm:py-4 text-xs sm:text-sm font-heading font-medium hover:bg-white/10 transition-colors">
               Explore Programs
@@ -90,19 +98,27 @@ export function HeroSection() {
         className="relative flex-1 min-h-[200px] sm:min-h-[260px] lg:absolute lg:inset-0 lg:min-h-0 lg:flex-none lg:z-0"
       >
           <div className="absolute inset-0 overflow-hidden rounded-2xl shadow-2xl lg:rounded-none lg:shadow-none">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="metadata"
-              poster="/hero-poster.webp"
-              disablePictureInPicture
-              className="w-full h-full object-cover"
-            >
-              <source src="/hero-video.webm" type="video/webm" />
-              <source src="/hero-video.mp4" type="video/mp4" />
-            </video>
+            <img
+              src="/hero-poster.webp"
+              alt=""
+              aria-hidden
+              className="hero-poster-zoom absolute inset-0 h-full w-full object-cover"
+            />
+            {videoOn && (
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                poster="/hero-poster.webp"
+                disablePictureInPicture
+                className="w-full h-full object-cover"
+              >
+                <source src="/hero-video.webm" type="video/webm" />
+                <source src="/hero-video.mp4" type="video/mp4" />
+              </video>
+            )}
             <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-black/10 via-black/5 to-transparent" />
             <a
               href="https://www.vecteezy.com/free-videos/yoga"

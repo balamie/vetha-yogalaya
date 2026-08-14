@@ -12,7 +12,7 @@ type Props = {
   stagger?: number
 }
 
-export function GsapReveal({ children, className = "", as: Tag = "p", stagger = 0.012 }: Props) {
+export function GsapReveal({ children, className = "", as: Tag = "p", stagger = 0.008 }: Props) {
   const ref = useRef<HTMLElement>(null)
 
   useLayoutEffect(() => {
@@ -26,15 +26,15 @@ export function GsapReveal({ children, className = "", as: Tag = "p", stagger = 
     el.innerHTML = words.map((w) => `<span class="gsap-word inline-block">${w}</span>`).join(" ")
     const targets = el.querySelectorAll<HTMLElement>(".gsap-word")
 
-    gsap.set(targets, { opacity: 0, y: 16 })
+    gsap.set(targets, { opacity: 0, y: 12 })
 
     const tl = gsap.timeline({
-      scrollTrigger: { trigger: el, start: "top 92%", once: true },
+      scrollTrigger: { trigger: el, start: "top 85%", once: true },
     })
     tl.to(targets, {
       opacity: 1,
       y: 0,
-      duration: 0.4,
+      duration: 0.35,
       stagger,
       ease: "power2.out",
     })

@@ -39,6 +39,13 @@ export function Navbar() {
   }, [])
 
   useEffect(() => {
+    document.documentElement.style.overflow = open ? "hidden" : ""
+    return () => {
+      document.documentElement.style.overflow = ""
+    }
+  }, [open])
+
+  useEffect(() => {
     const observers: IntersectionObserver[] = []
     for (const l of links) {
       const id = l.href.replace("#", "")
@@ -102,7 +109,7 @@ export function Navbar() {
             <a href="#free-session" className="group relative overflow-hidden rounded-full bg-gradient-to-b from-wine-light via-wine to-wine-deep px-6 py-3 text-sm font-heading font-semibold text-white hover:brightness-110 active:scale-[0.98] transition-all shadow-lg shadow-wine/30">
               <span className="absolute inset-x-0 top-0 h-1/2 bg-white/25 rounded-t-full pointer-events-none" />
               <span className="absolute -inset-x-8 -top-10 h-16 rotate-12 bg-white/10 blur-md group-hover:translate-x-24 transition-transform duration-700 pointer-events-none" />
-              Book a Trial
+              Book a Free Trial Class
             </a>
           </div>
 
@@ -124,19 +131,19 @@ export function Navbar() {
           >
             <div className="px-6 py-6 space-y-4">
               {links.map((l) => (
-                <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="block py-2 text-sm font-medium text-charcoal hover:text-wine">{l.label}</a>
+                <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="block py-3 text-sm font-medium text-charcoal hover:text-wine">{l.label}</a>
               ))}
               <div className="flex items-center gap-4 pt-4 border-t border-rose-dark/20">
-                <a href="https://www.instagram.com/vetha_yogalaya/" target="_blank" rel="noopener noreferrer" className="h-10 w-10 rounded-full bg-wine/5 flex items-center justify-center text-wine">
+                <a href="https://www.instagram.com/vetha_yogalaya/" target="_blank" rel="noopener noreferrer" className="h-11 w-11 rounded-full bg-wine/5 flex items-center justify-center text-wine">
                   <InstagramIcon />
                 </a>
-                <a href="https://www.facebook.com/vetha_Yogalaya" target="_blank" rel="noopener noreferrer" className="h-10 w-10 rounded-full bg-wine/5 flex items-center justify-center text-wine">
+                <a href="https://www.facebook.com/vetha_Yogalaya" target="_blank" rel="noopener noreferrer" className="h-11 w-11 rounded-full bg-wine/5 flex items-center justify-center text-wine">
                   <FacebookIcon />
                 </a>
               </div>
               <a href="#free-session" onClick={() => setOpen(false)} className="group relative overflow-hidden rounded-full bg-gradient-to-b from-wine-light via-wine to-wine-deep px-6 py-3 text-sm font-heading font-semibold text-white">
                 <span className="absolute inset-x-0 top-0 h-1/2 bg-white/25 rounded-t-full pointer-events-none" />
-                Book a Trial
+                Book a Free Trial Class
               </a>
             </div>
           </motion.div>

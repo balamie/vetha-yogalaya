@@ -54,6 +54,12 @@ const vethaMethod = [
 export function AboutInstructor() {
   const videoWrapRef = useRef<HTMLDivElement>(null)
   const aboutInView = useInView(videoWrapRef, { once: true, margin: "400px 0px" })
+  const [videoOn, setVideoOn] = useState(true)
+
+  useEffect(() => {
+    const nav = navigator as Navigator & { connection?: { saveData?: boolean } }
+    if (nav.connection?.saveData) setVideoOn(false)
+  }, [])
 
   return (
     <section id="about" className="section-padding bg-cream relative overflow-hidden">
@@ -71,18 +77,22 @@ export function AboutInstructor() {
             className="flex flex-col"
           >
             <div ref={videoWrapRef} className="flex-1 rounded-2xl overflow-hidden bg-rose min-h-[320px] relative">
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload={aboutInView ? "auto" : "none"}
-                poster="/about-poster.webp"
-                className="w-full h-full object-cover"
-              >
-                {aboutInView && <source src="/about/About_Video02.webm" type="video/webm" />}
-                {aboutInView && <source src="/about/About_Video02.mp4" type="video/mp4" />}
-              </video>
+              {videoOn ? (
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload={aboutInView ? "auto" : "none"}
+                  poster="/about-poster.webp"
+                  className="w-full h-full object-cover"
+                >
+                  {aboutInView && <source src="/about/About_Video02.webm" type="video/webm" />}
+                  {aboutInView && <source src="/about/About_Video02.mp4" type="video/mp4" />}
+                </video>
+              ) : (
+                <img src="/about-poster.webp" alt="Vetha Yogalaya instructor" className="w-full h-full object-cover" />
+              )}
             </div>
 
             <div className="grid grid-cols-2 gap-4 mt-6">

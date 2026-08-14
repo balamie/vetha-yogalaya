@@ -373,7 +373,7 @@ function ProgramModal({ program, onClose }: { program: Program; onClose: () => v
             <h3 className="text-lg sm:text-xl font-bold font-heading text-wine">{program.title}</h3>
             <p className="text-xs sm:text-sm text-charcoal-light">{program.ages} • {program.levels}</p>
           </div>
-          <button onClick={onClose} aria-label="Close program details" className="h-8 w-8 shrink-0 rounded-full bg-rose/30 flex items-center justify-center hover:bg-rose transition-colors">
+          <button onClick={onClose} aria-label="Close program details" className="h-10 w-10 shrink-0 rounded-full bg-rose/30 flex items-center justify-center hover:bg-rose transition-colors">
             <X className="h-4 w-4 text-wine" />
           </button>
         </div>
