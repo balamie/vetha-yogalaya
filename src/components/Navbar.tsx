@@ -82,14 +82,14 @@ export function Navbar() {
           </a>
 
           {/* Desktop Nav */}
-          <div className="hidden xl:flex items-center gap-8">
+          <div className="hidden xl:flex items-center gap-6 2xl:gap-8 ml-auto">
             {links.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
                 aria-current={active === l.href.replace("#", "") ? "true" : undefined}
                 className={cn(
-                  "text-sm font-medium transition-colors",
+                  "text-sm font-medium transition-colors whitespace-nowrap",
                   active === l.href.replace("#", "")
                     ? "text-wine font-semibold"
                     : "text-charcoal hover:text-wine"
@@ -106,8 +106,8 @@ export function Navbar() {
                 <FacebookIcon />
               </a>
             </div>
-            <a href="#free-session" className="inline-flex items-center rounded-full bg-wine px-6 py-3 text-sm font-heading font-semibold text-white hover:bg-wine-light transition-colors shadow-lg shadow-wine/20">
-              Book a Free Trial Class
+            <a href="#free-session" className="inline-flex items-center justify-center text-center leading-tight rounded-full bg-wine px-5 py-2.5 text-sm font-heading font-semibold text-white hover:bg-wine-light transition-colors shadow-lg shadow-wine/20">
+              Book a Free<br />Trial Class
             </a>
           </div>
 
