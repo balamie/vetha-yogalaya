@@ -54,7 +54,7 @@ export function HeroSection() {
           </GsapReveal>
 
           <div className="flex flex-wrap gap-3 sm:gap-4">
-            <a href="#free-session" className="inline-flex items-center rounded-full bg-wine px-6 sm:px-8 py-3 sm:py-4 text-xs sm:text-sm font-heading font-semibold text-white hover:bg-wine-light transition-colors shadow-lg shadow-wine/20">
+            <a href="#booking" className="inline-flex items-center rounded-full bg-wine px-6 sm:px-8 py-3 sm:py-4 text-xs sm:text-sm font-heading font-semibold text-white hover:bg-wine-light transition-colors shadow-lg shadow-wine/20">
               <Play className="mr-2 h-4 w-4" />
               Book a Free Trial Class
             </a>

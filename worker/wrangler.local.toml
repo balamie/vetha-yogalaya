@@ -1,0 +1,17 @@
+# Local development configuration for the booking Worker
+# This file is used by `wrangler dev` for local testing
+
+name = "booking-api"
+main = "src/index.ts"
+compatibility_date = "2025-06-25"
+
+[vars]
+ALLOWED_ORIGINS = "http://localhost:5174,http://localhost:8787"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "vetha-bookings"
+database_id = "local-test-db"
+
+# Local dev secrets - use wrangler dev --env for these
+# For local testing, we'll use a mock auth check

@@ -1,0 +1,15 @@
+name = "booking-api"
+main = "worker/src/index.ts"
+compatibility_date = "2025-06-25"
+
+[vars]
+ALLOWED_ORIGINS = "https://vetha-yogalaya.pages.dev,https://vethayogalaya.in,http://localhost:5174"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "vetha-bookings"
+database_id = "PLACEHOLDER_RUN_WRANGLER_CREATE"
+
+# Admin credentials - set via wrangler secret put, never commit real values
+# wrangler secret put ADMIN_USERNAME
+# wrangler secret put ADMIN_PASSWORD

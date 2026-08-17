@@ -14,7 +14,7 @@ import { YogaForEverydayHeroes } from "./components/YogaForEverydayHeroes"
 import { Testimonials } from "./components/Testimonials"
 import { InternationalYogaDay } from "./components/InternationalYogaDay"
 import { SeniorCitizenSection } from "./components/SeniorCitizenSection"
-import { FreeSession } from "./components/FreeSession"
+import { BookingSection } from "./components/BookingSection"
 import { FAQSection } from "./components/FAQSection"
 import { ContactSection } from "./components/ContactSection"
 import { GallerySection } from "./components/GallerySection"
@@ -31,6 +31,7 @@ const TermsAndConditions = lazy(() => import("./pages/TermsAndConditions").then(
 const BlogKidsScreenAddiction = lazy(() => import("./pages/BlogKidsScreenAddiction").then((m) => ({ default: m.BlogKidsScreenAddiction })))
 const BlogBreathingScience = lazy(() => import("./pages/BlogBreathingScience").then((m) => ({ default: m.BlogBreathingScience })))
 const BlogPrenatalYoga = lazy(() => import("./pages/BlogPrenatalYoga").then((m) => ({ default: m.BlogPrenatalYoga })))
+const AdminBookings = lazy(() => import("./pages/AdminBookings").then((m) => ({ default: m.AdminBookings })))
 const NotFound = lazy(() => import("./pages/NotFound").then((m) => ({ default: m.NotFound })))
 
 function PageSkeleton() {
@@ -63,7 +64,7 @@ function HomePage() {
       <WhyKidsLoveSection />
       <AboutInstructor />
       <MentorSection />
-      <FreeSession />
+      <BookingSection />
       <AchievementsSection />
       <YogaForEverydayHeroes />
       <Testimonials />
@@ -109,6 +110,7 @@ export default function App() {
               <Route path="/blog/kids-screen-addiction" element={<BlogKidsScreenAddiction />} />
               <Route path="/blog/breathing-science" element={<BlogBreathingScience />} />
               <Route path="/blog/prenatal-yoga-guide" element={<BlogPrenatalYoga />} />
+              <Route path="/admin/bookings" element={<AdminBookings />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>

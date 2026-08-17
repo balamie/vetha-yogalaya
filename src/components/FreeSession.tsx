@@ -61,7 +61,7 @@ export function FreeSession() {
             transition={{ duration: 0.4, delay: 0.15 }}
             className="mt-6 sm:mt-10"
           >
-            <a href="#contact" className="inline-flex items-center rounded-full bg-gold text-wine-deep px-10 py-4 text-base font-heading font-semibold hover:bg-gold-light transition-colors shadow-lg shadow-gold/30">
+            <a href="#booking" className="inline-flex items-center rounded-full bg-gold text-wine-deep px-10 py-4 text-base font-heading font-semibold hover:bg-gold-light transition-colors shadow-lg shadow-gold/30">
               Book a Free Trial Class
               <ArrowRight className="ml-2 h-5 w-5" />
             </a>

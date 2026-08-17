@@ -106,7 +106,10 @@ export function Navbar() {
                 <FacebookIcon />
               </a>
             </div>
-            <a href="#free-session" className="inline-flex items-center justify-center text-center leading-tight rounded-full bg-wine px-5 py-2.5 text-sm font-heading font-semibold text-white hover:bg-wine-light transition-colors shadow-lg shadow-wine/20">
+            <a href="/admin/bookings" className="text-xs font-medium text-charcoal-light hover:text-wine transition-colors px-2 py-1 rounded-lg hover:bg-rose/10">
+              Admin
+            </a>
+            <a href="#booking" className="inline-flex items-center justify-center text-center leading-tight rounded-full bg-wine px-5 py-2.5 text-sm font-heading font-semibold text-white hover:bg-wine-light transition-colors shadow-lg shadow-wine/20">
               Book a Free<br />Trial Class
             </a>
           </div>
@@ -139,9 +142,14 @@ export function Navbar() {
                   <FacebookIcon />
                 </a>
               </div>
-              <a href="#free-session" onClick={() => setOpen(false)} className="inline-flex items-center rounded-full bg-wine px-6 py-3 text-sm font-heading font-semibold text-white hover:bg-wine-light transition-colors">
-                Book a Free Trial Class
-              </a>
+              <div className="flex items-center gap-3 pt-4 border-t border-rose-dark/20">
+                <a href="/admin/bookings" onClick={() => setOpen(false)} className="text-xs font-medium text-charcoal-light hover:text-wine transition-colors px-3 py-2 rounded-lg hover:bg-rose/10">
+                  Admin
+                </a>
+                <a href="#booking" onClick={() => setOpen(false)} className="inline-flex items-center rounded-full bg-wine px-6 py-3 text-sm font-heading font-semibold text-white hover:bg-wine-light transition-colors">
+                  Book a Free Trial Class
+                </a>
+              </div>
             </div>
           </motion.div>
         )}
