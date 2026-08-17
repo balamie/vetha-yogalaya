@@ -2,6 +2,25 @@
 
 const API_URL = import.meta.env.VITE_BOOKING_API_URL || "https://booking-api.balamie.workers.dev";
 
+// Admin auth helpers (stored in localStorage for local dev)
+function getAdminAuth(): string | null {
+  return localStorage.getItem("vetha_admin_auth");
+}
+
+export function setAdminAuth(username: string, password: string): string {
+  const encoded = btoa(`${username}:${password}`);
+  localStorage.setItem("vetha_admin_auth", encoded);
+  return encoded;
+}
+
+export function clearAdminAuth(): void {
+  localStorage.removeItem("vetha_admin_auth");
+}
+
+export function isAdminLoggedIn(): boolean {
+  return !!getAdminAuth();
+}
+
 export interface BookingAvailability {
   date: string;
   booked: number;
@@ -106,7 +125,11 @@ export async function getBookings(filters?: {
   if (filters?.from) params.set("from", filters.from);
   if (filters?.to) params.set("to", filters.to);
 
-  const res = await fetch(`${API_URL}/api/admin/bookings?${params}`);
+  const auth = getAdminAuth();
+  const headers: Record<string, string> = {};
+  if (auth) headers["Authorization"] = `Basic ${auth}`;
+
+  const res = await fetch(`${API_URL}/api/admin/bookings?${params}`, { headers });
   if (!res.ok) throw new Error("Failed to fetch bookings");
   return res.json();
 }
@@ -115,9 +138,13 @@ export async function getBookings(filters?: {
  * Cancel a booking (admin only)
  */
 export async function cancelBooking(id: string): Promise<void> {
+  const auth = getAdminAuth();
+  const headers: Record<string, string> = { "Content-Type": "application/json" };
+  if (auth) headers["Authorization"] = `Basic ${auth}`;
+
   const res = await fetch(`${API_URL}/api/admin/bookings/${id}`, {
     method: "PATCH",
-    headers: { "Content-Type": "application/json" },
+    headers,
     body: JSON.stringify({ status: "cancelled" }),
   });
 
@@ -128,8 +155,13 @@ export async function cancelBooking(id: string): Promise<void> {
  * Delete a booking (admin only)
  */
 export async function deleteBooking(id: string): Promise<void> {
+  const auth = getAdminAuth();
+  const headers: Record<string, string> = {};
+  if (auth) headers["Authorization"] = `Basic ${auth}`;
+
   const res = await fetch(`${API_URL}/api/admin/bookings/${id}`, {
     method: "DELETE",
+    headers,
   });
 
   if (!res.ok) throw new Error("Failed to delete booking");
@@ -144,9 +176,13 @@ export async function updateAttendance(
   attended: boolean
 ): Promise<void> {
   const field = session === 1 ? "attended_session1" : "attended_session2";
+  const auth = getAdminAuth();
+  const headers: Record<string, string> = { "Content-Type": "application/json" };
+  if (auth) headers["Authorization"] = `Basic ${auth}`;
+
   const res = await fetch(`${API_URL}/api/admin/bookings/${id}`, {
     method: "PATCH",
-    headers: { "Content-Type": "application/json" },
+    headers,
     body: JSON.stringify({ [field]: attended ? 1 : 0 }),
   });
 

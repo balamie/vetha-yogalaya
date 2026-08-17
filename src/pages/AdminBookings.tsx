@@ -13,7 +13,7 @@ import {
   X,
   BarChart3,
 } from "lucide-react";
-import { getBookings, cancelBooking, deleteBooking, updateAttendance } from "../lib/booking";
+import { getBookings, cancelBooking, deleteBooking, updateAttendance, isAdminLoggedIn, setAdminAuth } from "../lib/booking";
 import type { Booking, AdminStats } from "../lib/booking";
 
 type SortField = "session_date" | "created_at" | "child_name";
@@ -30,6 +30,22 @@ export function AdminBookings() {
   const [sortOrder, setSortOrder] = useState<SortOrder>("desc");
   const [actionLoading, setActionLoading] = useState<string | null>(null);
   const [attendingLoading, setAttendingLoading] = useState<string | null>(null);
+  const [showLogin, setShowLogin] = useState(!isAdminLoggedIn());
+
+  const [loginUser, setLoginUser] = useState("");
+  const [loginPass, setLoginPass] = useState("");
+  const [loginError, setLoginError] = useState<string | null>(null);
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!loginUser || !loginPass) {
+      setLoginError("Username and password required");
+      return;
+    }
+    setAdminAuth(loginUser, loginPass);
+    setShowLogin(false);
+    setLoginError(null);
+  };
 
   const fetchBookings = useCallback(async () => {
     setLoading(true);
@@ -42,7 +58,12 @@ export function AdminBookings() {
       setBookings(result.bookings);
       if (result.stats) setStats(result.stats);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to fetch bookings");
+      if (err instanceof Error && err.message.includes("401")) {
+        setShowLogin(true);
+        setError(null);
+      } else {
+        setError(err instanceof Error ? err.message : "Failed to fetch bookings");
+      }
     } finally {
       setLoading(false);
     }
@@ -140,8 +161,46 @@ export function AdminBookings() {
           <h1 className="text-3xl font-bold font-heading text-wine mb-2">Booking Management</h1>
           <p className="text-charcoal-light mb-6">View and manage all trial class bookings and attendance.</p>
 
+          {/* Login Gate */}
+          {showLogin && (
+            <div className="bg-white rounded-2xl p-8 shadow-sm border border-rose/30 mb-6 max-w-md">
+              <h2 className="text-xl font-bold text-wine mb-4">Admin Login</h2>
+              <p className="text-sm text-charcoal-light mb-4">Enter your admin credentials to view bookings.</p>
+              {loginError && <p className="text-sm text-red-500 mb-3">{loginError}</p>}
+              <form onSubmit={handleLogin} className="space-y-3">
+                <div>
+                  <label htmlFor="admin-user" className="block text-sm font-medium text-charcoal mb-1">Username</label>
+                  <input
+                    id="admin-user"
+                    type="text"
+                    value={loginUser}
+                    onChange={(e) => setLoginUser(e.target.value)}
+                    className="w-full rounded-xl border border-rose-dark/30 bg-white px-4 py-2.5 text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold"
+                    autoFocus
+                  />
+                </div>
+                <div>
+                  <label htmlFor="admin-pass" className="block text-sm font-medium text-charcoal mb-1">Password</label>
+                  <input
+                    id="admin-pass"
+                    type="password"
+                    value={loginPass}
+                    onChange={(e) => setLoginPass(e.target.value)}
+                    className="w-full rounded-xl border border-rose-dark/30 bg-white px-4 py-2.5 text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="w-full rounded-xl bg-wine px-4 py-2.5 text-sm font-heading font-semibold text-white hover:bg-wine-light transition-colors"
+                >
+                  Log In
+                </button>
+              </form>
+            </div>
+          )}
+
           {/* Stats Summary */}
-          {stats && (
+          {!showLogin && stats && (
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
               <StatCard
                 icon={<Calendar className="h-5 w-5" />}
@@ -170,6 +229,7 @@ export function AdminBookings() {
           )}
 
           {/* Filters */}
+          {!showLogin && (
           <div className="bg-white rounded-2xl p-6 shadow-sm border border-rose/30 mb-6">
             <div className="flex flex-wrap items-end gap-4">
               <div>
@@ -211,8 +271,10 @@ export function AdminBookings() {
               </div>
             </div>
           </div>
+          )}
 
           {/* Bookings Table */}
+          {!showLogin && (
           <div className="bg-white rounded-2xl shadow-sm border border-rose/30 overflow-hidden">
             {loading ? (
               <div className="p-12 text-center">
@@ -440,8 +502,10 @@ export function AdminBookings() {
               </div>
             )}
           </div>
+          )}
 
           {/* Legend */}
+          {!showLogin && (
           <div className="mt-6 p-4 bg-white rounded-xl border border-rose/30">
             <p className="text-sm font-semibold text-wine mb-2">Legend</p>
             <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
@@ -467,6 +531,7 @@ export function AdminBookings() {
               </div>
             </div>
           </div>
+          )}
         </motion.div>
       </div>
     </div>
