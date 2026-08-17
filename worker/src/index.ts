@@ -77,6 +77,28 @@ function getTodayIST(): string {
   return toISTDate(ist);
 }
 
+// Indian Government Holidays
+const INDIAN_HOLIDAYS: Record<string, string> = {
+  "01-26": "Republic Day",
+  "08-15": "Independence Day",
+  "10-02": "Gandhi Jayanti",
+  "2026-03-10": "Holi",
+  "2026-03-20": "Eid al-Fitr",
+  "2026-05-27": "Eid al-Adha",
+  "2026-10-20": "Diwali",
+  "2026-11-07": "Diwali (Govt Holiday)",
+  "2027-03-29": "Holi",
+  "2027-04-09": "Eid al-Fitr",
+  "2027-06-05": "Eid al-Adha",
+  "2027-11-09": "Diwali",
+};
+
+function isHoliday(dateStr: string): boolean {
+  if (INDIAN_HOLIDAYS[dateStr]) return true;
+  const mmdd = dateStr.slice(5);
+  return !!INDIAN_HOLIDAYS[mmdd];
+}
+
 // Get availability for a date
 app.get("/api/availability", async (c) => {
   const date = c.req.query("date");
@@ -131,7 +153,7 @@ app.post("/api/bookings", async (c) => {
     parent_name: string;
     parent_phone: string;
     whatsapp_number?: string;
-    parent_email?: string;
+    parent_email: string;
     session_date: string;
   }>();
 
@@ -147,8 +169,8 @@ app.post("/api/bookings", async (c) => {
   if (!body.parent_name || body.parent_name.trim().length < 2) {
     return c.json({ error: "Parent name is required" }, 400);
   }
-  if (!body.parent_phone || body.parent_phone.replace(/\D/g, "").length < 10) {
-    return c.json({ error: "Valid parent phone number is required" }, 400);
+  if (!body.parent_phone || body.parent_phone.replace(/\D/g, "").length < 7) {
+    return c.json({ error: "Valid parent phone number is required (with country code)" }, 400);
   }
 
   // WhatsApp number falls back to parent phone
@@ -156,9 +178,9 @@ app.post("/api/bookings", async (c) => {
     ? body.whatsapp_number.replace(/\D/g, "")
     : body.parent_phone.replace(/\D/g, "");
 
-  // Validate email format if provided
-  if (body.parent_email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.parent_email)) {
-    return c.json({ error: "Invalid email address format" }, 400);
+  // Validate email is required
+  if (!body.parent_email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.parent_email)) {
+    return c.json({ error: "A valid email address is required" }, 400);
   }
 
   // Validate date
@@ -171,6 +193,11 @@ app.post("/api/bookings", async (c) => {
   const day = sessionDateObj.getDay();
   if (day !== 1 && day !== 5) {
     return c.json({ error: "Bookings are only available on Mondays and Fridays" }, 400);
+  }
+
+  // Validate date is not a holiday
+  if (isHoliday(body.session_date)) {
+    return c.json({ error: "This date is a government holiday. Please choose another date." }, 400);
   }
 
   // Validate date is in the future

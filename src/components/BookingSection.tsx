@@ -1,8 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Calendar,
-  Phone,
   CheckCircle2,
   Loader2,
   ArrowRight,
@@ -10,11 +8,10 @@ import {
   ChevronLeft,
   ChevronRight,
   User,
-  Mail,
   MessageCircle,
   Baby,
 } from "lucide-react";
-import { getAvailableDates, formatDateDisplay, formatDateShort } from "../lib/dates";
+import { getAvailableDates, getPairedDate, formatDateDisplay } from "../lib/dates";
 import type { DateOption } from "../lib/dates";
 import { createBooking, getWhatsAppLink, getBulkAvailability } from "../lib/booking";
 import type { BookingAvailability } from "../lib/booking";
@@ -22,14 +19,30 @@ import { GsapReveal } from "./GsapReveal";
 
 type Step = "select-date" | "fill-details" | "success";
 
+// Country codes for phone input
+const COUNTRY_CODES = [
+  { code: "+91", country: "IN", label: "India +91" },
+  { code: "+1", country: "US", label: "US/Canada +1" },
+  { code: "+44", country: "GB", label: "UK +44" },
+  { code: "+61", country: "AU", label: "Australia +61" },
+  { code: "+971", country: "AE", label: "UAE +971" },
+  { code: "+65", country: "SG", label: "Singapore +65" },
+  { code: "+60", country: "MY", label: "Malaysia +60" },
+  { code: "+94", country: "LK", label: "Sri Lanka +94" },
+  { code: "+977", country: "NP", label: "Nepal +977" },
+  { code: "+880", country: "BD", label: "Bangladesh +880" },
+];
+
 interface FormData {
   parent_name: string;
+  phone_country_code: string;
   parent_phone: string;
   whatsapp_number: string;
   same_as_phone: boolean;
   parent_email: string;
   child_name: string;
   child_age: string;
+  join_community: boolean;
 }
 
 // Month grid calendar helpers
@@ -53,12 +66,14 @@ export function BookingSection() {
   const [availability, setAvailability] = useState<Record<string, BookingAvailability>>({});
   const [formData, setFormData] = useState<FormData>({
     parent_name: "",
+    phone_country_code: "+91",
     parent_phone: "",
     whatsapp_number: "",
     same_as_phone: true,
     parent_email: "",
     child_name: "",
     child_age: "",
+    join_community: true,
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -129,9 +144,13 @@ export function BookingSection() {
 
     setSelectedDate(dateOption);
 
-    // Compute paired date option
-    const paired = allDates.find((d) => d.date !== dateOption.date && isPairedTo(dateOption.date, d.date));
-    setPairedDateOption(paired || null);
+    // Compute paired date using forward-only logic (+3 for Fri→Mon, +4 for Mon→Fri)
+    const [y, m, d] = dateOption.date.split("-").map(Number);
+    const selectedDateObj = new Date(y, m - 1, d);
+    const pairedDateObj = getPairedDate(selectedDateObj);
+    const pairedDateStr = `${pairedDateObj.getFullYear()}-${String(pairedDateObj.getMonth() + 1).padStart(2, "0")}-${String(pairedDateObj.getDate()).padStart(2, "0")}`;
+    const paired = allDates.find((d) => d.date === pairedDateStr) || null;
+    setPairedDateOption(paired);
 
     setStep("fill-details");
     setError(null);
@@ -144,14 +163,53 @@ export function BookingSection() {
     setLoading(true);
     setError(null);
 
+    // Validate
+    if (!formData.parent_name.trim()) {
+      setError("Please enter your name.");
+      setLoading(false);
+      return;
+    }
+    if (!formData.parent_phone.trim() || formData.parent_phone.trim().length < 6) {
+      setError("Please enter a valid phone number.");
+      setLoading(false);
+      return;
+    }
+    if (!formData.parent_email.trim()) {
+      setError("Please enter your email address.");
+      setLoading(false);
+      return;
+    }
+    if (!formData.parent_email.includes("@") || !formData.parent_email.includes(".")) {
+      setError("Please enter a valid email address.");
+      setLoading(false);
+      return;
+    }
+    if (!formData.child_name.trim()) {
+      setError("Please enter your child's name.");
+      setLoading(false);
+      return;
+    }
+    if (!formData.child_age.trim()) {
+      setError("Please enter your child's age.");
+      setLoading(false);
+      return;
+    }
+    const age = parseInt(formData.child_age);
+    if (isNaN(age) || age < 2 || age > 15) {
+      setError("Age must be between 2 and 15.");
+      setLoading(false);
+      return;
+    }
+
     try {
+      const fullPhone = `${formData.phone_country_code}${formData.parent_phone}`;
       const result = await createBooking({
         child_name: formData.child_name,
         child_age: parseInt(formData.child_age, 10),
         parent_name: formData.parent_name,
-        parent_phone: formData.parent_phone,
-        whatsapp_number: formData.same_as_phone ? undefined : formData.whatsapp_number,
-        parent_email: formData.parent_email || undefined,
+        parent_phone: fullPhone,
+        whatsapp_number: formData.same_as_phone ? fullPhone : `${formData.phone_country_code}${formData.whatsapp_number}`,
+        parent_email: formData.parent_email,
         session_date: selectedDate.date,
       });
 
@@ -255,28 +313,36 @@ export function BookingSection() {
                         const isAvailable = availableSet.has(dateStr);
                         const isSelected = selectedDate?.date === dateStr;
                         const isFull = isAvailable && availability[dateStr]?.full;
+                        const dateOption = allDates.find((d) => d.date === dateStr);
+                        const isHoliday = dateOption?.isHoliday;
+                        const holidayName = dateOption?.holidayName;
 
                         return (
                           <button
                             key={dateStr}
                             type="button"
-                            disabled={!isAvailable || isFull}
+                            disabled={!isAvailable || isFull || !!isHoliday}
                             onClick={() => {
-                              if (isAvailable && !isFull) {
+                              if (isAvailable && !isFull && !isHoliday) {
                                 const opt = allDates.find((d) => d.date === dateStr);
                                 if (opt) handleDateSelect(opt);
                               }
                             }}
+                            title={isHoliday ? `Holiday: ${holidayName}` : undefined}
                             className={`
                               relative rounded-xl py-2.5 text-sm font-medium transition-all
                               ${isSelected ? "bg-wine text-white shadow-md" : ""}
-                              ${isAvailable && !isFull && !isSelected ? "bg-rose/20 text-wine hover:bg-gold/20 hover:text-wine-deep cursor-pointer font-semibold" : ""}
-                              ${isFull ? "bg-red-50 text-red-400 cursor-not-allowed line-through" : ""}
-                              ${!isAvailable ? "text-charcoal-light/30 cursor-default" : ""}
+                              ${isHoliday ? "bg-orange-50 text-orange-400 cursor-not-allowed line-through decoration-1" : ""}
+                              ${isAvailable && !isFull && !isSelected && !isHoliday ? "bg-rose/20 text-wine hover:bg-gold/20 hover:text-wine-deep cursor-pointer font-semibold" : ""}
+                              ${isFull && !isHoliday ? "bg-red-50 text-red-400 cursor-not-allowed line-through" : ""}
+                              ${!isAvailable && !isHoliday ? "text-charcoal-light/30 cursor-default" : ""}
                             `}
                           >
                             {day}
-                            {isAvailable && !isFull && (
+                            {isHoliday && (
+                              <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-orange-400" />
+                            )}
+                            {isAvailable && !isFull && !isHoliday && (
                               <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-gold" />
                             )}
                           </button>
@@ -291,6 +357,9 @@ export function BookingSection() {
                       </span>
                       <span className="flex items-center gap-1">
                         <span className="w-2 h-2 rounded-full bg-red-400" /> Full
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <span className="w-2 h-2 rounded-full bg-orange-400" /> Holiday
                       </span>
                       <span className="flex items-center gap-1">
                         <span className="w-2 h-2 rounded-full bg-charcoal-light/30" /> Unavailable
@@ -380,17 +449,28 @@ export function BookingSection() {
                           <label htmlFor="parent-phone" className="block text-sm font-medium text-charcoal mb-1">
                             Mobile Number *
                           </label>
-                          <input
-                            id="parent-phone"
-                            type="tel"
-                            placeholder="Parent Mobile Number"
-                            required
-                            minLength={10}
-                            maxLength={15}
-                            value={formData.parent_phone}
-                            onChange={updateForm("parent_phone")}
-                            className="w-full rounded-xl border border-rose-dark/30 bg-white px-4 py-3 text-charcoal placeholder:text-charcoal-light/50 focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all"
-                          />
+                          <div className="flex gap-2">
+                            <select
+                              value={formData.phone_country_code}
+                              onChange={(e) => setFormData((prev) => ({ ...prev, phone_country_code: e.target.value }))}
+                              className="w-36 shrink-0 rounded-xl border border-rose-dark/30 bg-white px-3 py-3 text-charcoal focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all text-sm"
+                            >
+                              {COUNTRY_CODES.map((c) => (
+                                <option key={c.code} value={c.code}>{c.label}</option>
+                              ))}
+                            </select>
+                            <input
+                              id="parent-phone"
+                              type="tel"
+                              placeholder="Phone number"
+                              required
+                              minLength={6}
+                              maxLength={12}
+                              value={formData.parent_phone}
+                              onChange={updateForm("parent_phone")}
+                              className="w-full rounded-xl border border-rose-dark/30 bg-white px-4 py-3 text-charcoal placeholder:text-charcoal-light/50 focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all"
+                            />
+                          </div>
                         </div>
 
                         {/* WhatsApp same as phone checkbox */}
@@ -440,12 +520,13 @@ export function BookingSection() {
 
                         <div>
                           <label htmlFor="parent-email" className="block text-sm font-medium text-charcoal mb-1">
-                            Email Address <span className="text-charcoal-light/50">(optional)</span>
+                            Email Address *
                           </label>
                           <input
                             id="parent-email"
                             type="email"
                             placeholder="Parent Email"
+                            required
                             value={formData.parent_email}
                             onChange={updateForm("parent_email")}
                             className="w-full rounded-xl border border-rose-dark/30 bg-white px-4 py-3 text-charcoal placeholder:text-charcoal-light/50 focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all"
@@ -499,6 +580,24 @@ export function BookingSection() {
                           />
                         </div>
                       </div>
+                    </div>
+
+                    {/* WhatsApp Community opt-in */}
+                    <div className="bg-green-50 border border-green-200 rounded-xl p-4 mt-4">
+                      <label className="flex items-start gap-3 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          checked={formData.join_community}
+                          onChange={(e) => setFormData((prev) => ({ ...prev, join_community: e.target.checked }))}
+                          className="mt-1 h-4 w-4 rounded border-green-300 text-green-600 focus:ring-green-500"
+                        />
+                        <div>
+                          <span className="text-sm font-medium text-green-800">Join Our WhatsApp Community</span>
+                          <p className="text-xs text-green-700 mt-0.5">
+                            Get updates, tips, and connect with other parents. We'll add you to the community before your first class.
+                          </p>
+                        </div>
+                      </label>
                     </div>
 
                     {error && (
@@ -592,6 +691,21 @@ export function BookingSection() {
                     Confirm on WhatsApp
                   </a>
 
+                  {formData.join_community && (
+                    <a
+                      href="https://chat.whatsapp.com/YOUR_COMMUNITY_LINK"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 inline-flex items-center gap-2 rounded-full border-2 border-[#25D366] px-6 py-2.5 text-[#25D366] font-semibold hover:bg-[#25D366]/5 transition-colors"
+                    >
+                      <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18c-1.74 0-3.36-.46-4.76-1.26l-.34-.2-2.87.85.85-2.87-.2-.34A7.963 7.963 0 014 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"/>
+                        <path d="M16 13.5c-.3-.15-1.75-.85-2-1-.3-.15-.55-.15-.8.15-.25.3-.95 1-1.15 1.2-.2.2-.4.25-.7.1-.3-.15-1.3-.48-2.5-1.5-.9-.8-1.5-1.75-1.65-2.05-.15-.3 0-.5.1-.65.1-.15.3-.4.45-.55.15-.2.2-.3.3-.5.1-.2.05-.4 0-.55-.05-.15-.8-1.95-1.1-2.7-.3-.7-.6-.6-.8-.6h-.7c-.25 0-.65.1-1 .45-.35.35-1.25 1.2-1.25 2.95 0 1.75 1.3 3.45 1.45 3.65.15.2 2.55 3.85 6.15 5.4.85.35 1.5.55 2 .7.85.25 1.65.2 2.25.15.65-.1 1.75-.7 2-1.4.25-.7.25-1.3.2-1.4-.1-.15-.3-.2-.6-.35z"/>
+                      </svg>
+                      Join WhatsApp Community
+                    </a>
+                  )}
+
                   <button
                     type="button"
                     onClick={() => {
@@ -600,12 +714,14 @@ export function BookingSection() {
                       setPairedDateOption(null);
                       setFormData({
                         parent_name: "",
+                        phone_country_code: "+91",
                         parent_phone: "",
                         whatsapp_number: "",
                         same_as_phone: true,
                         parent_email: "",
                         child_name: "",
                         child_age: "",
+                        join_community: true,
                       });
                       setBookingResult(null);
                     }}
@@ -621,15 +737,4 @@ export function BookingSection() {
       </div>
     </section>
   );
-}
-
-// Helper: check if two dates are paired
-function isPairedTo(date1: string, date2: string): boolean {
-  const [y1, m1, d1] = date1.split("-").map(Number);
-  const [y2, m2, d2] = date2.split("-").map(Number);
-  const dt1 = new Date(y1, m1 - 1, d1);
-  const dt2 = new Date(y2, m2 - 1, d2);
-  const diff = Math.abs(dt1.getTime() - dt2.getTime());
-  const days = diff / (1000 * 60 * 60 * 24);
-  return (days === 3 || days === 4) && dt1.getDay() !== dt2.getDay();
 }

@@ -10,10 +10,10 @@ import {
   Phone,
   Mail,
   Check,
-  X,
   BarChart3,
+  LogOut,
 } from "lucide-react";
-import { getBookings, cancelBooking, deleteBooking, updateAttendance, isAdminLoggedIn, setAdminAuth } from "../lib/booking";
+import { getBookings, cancelBooking, deleteBooking, updateAttendance, isAdminLoggedIn, setAdminAuth, clearAdminAuth } from "../lib/booking";
 import type { Booking, AdminStats } from "../lib/booking";
 
 type SortField = "session_date" | "created_at" | "child_name";
@@ -158,8 +158,22 @@ export function AdminBookings() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
         >
-          <h1 className="text-3xl font-bold font-heading text-wine mb-2">Booking Management</h1>
-          <p className="text-charcoal-light mb-6">View and manage all trial class bookings and attendance.</p>
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h1 className="text-3xl font-bold font-heading text-wine mb-2">Booking Management</h1>
+              <p className="text-charcoal-light">View and manage all trial class bookings and attendance.</p>
+            </div>
+            {!showLogin && (
+              <button
+                type="button"
+                onClick={() => { clearAdminAuth(); setShowLogin(true); setBookings([]); setStats(null); }}
+                className="flex items-center gap-2 px-4 py-2 rounded-xl border border-rose-dark/30 text-sm text-charcoal hover:bg-rose/20 hover:text-wine transition-colors"
+              >
+                <LogOut className="h-4 w-4" />
+                Sign Out
+              </button>
+            )}
+          </div>
 
           {/* Login Gate */}
           {showLogin && (

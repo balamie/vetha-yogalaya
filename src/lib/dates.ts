@@ -4,6 +4,49 @@
 const IST_OFFSET = 5.5 * 60; // IST offset in minutes
 
 /**
+ * Indian Government Holidays (fixed-date national holidays)
+ * These are blocked on Mon/Fri booking days.
+ * Variable-date holidays (Holi, Diwali, Eid) are added per year.
+ */
+const INDIAN_HOLIDAYS: Record<string, string> = {
+  // Fixed-date national holidays
+  "01-26": "Republic Day",
+  "08-15": "Independence Day",
+  "10-02": "Gandhi Jayanti",
+  // 2026 variable holidays
+  "2026-03-10": "Holi",
+  "2026-03-20": "Eid al-Fitr",
+  "2026-05-27": "Eid al-Adha",
+  "2026-10-20": "Diwali",
+  "2026-11-07": "Diwali (Govt Holiday)",
+  // 2027 variable holidays (approximate)
+  "2027-03-29": "Holi",
+  "2027-04-09": "Eid al-Fitr",
+  "2027-06-05": "Eid al-Adha",
+  "2027-11-09": "Diwali",
+};
+
+/**
+ * Check if a date string (YYYY-MM-DD) is an Indian government holiday
+ */
+export function isIndianHoliday(dateStr: string): boolean {
+  // Check exact date first (for variable holidays)
+  if (INDIAN_HOLIDAYS[dateStr]) return true;
+  // Check month-day (for fixed holidays)
+  const mmdd = dateStr.slice(5);
+  return !!INDIAN_HOLIDAYS[mmdd];
+}
+
+/**
+ * Get the holiday name if the date is a holiday, or null
+ */
+export function getHolidayName(dateStr: string): string | null {
+  if (INDIAN_HOLIDAYS[dateStr]) return INDIAN_HOLIDAYS[dateStr];
+  const mmdd = dateStr.slice(5);
+  return INDIAN_HOLIDAYS[mmdd] || null;
+}
+
+/**
  * Get current date in IST
  */
 function getISTDate(): Date {
@@ -25,6 +68,8 @@ export interface DateOption {
   label: string; // e.g., "Friday, 21 Aug 2026"
   shortLabel: string; // e.g., "Fri 21 Aug"
   dayName: string; // e.g., "Friday"
+  isHoliday: boolean;
+  holidayName: string | null;
 }
 
 /**
@@ -84,6 +129,7 @@ export function getPairedDate(date: Date): Date {
  * Get all available booking dates within 30 days from today.
  * Only Fridays and Mondays are included.
  * Today is excluded if it is a Mon/Fri.
+ * Holidays are included but marked as unavailable.
  */
 export function getAvailableDates(): DateOption[] {
   const today = getISTDate();
@@ -95,11 +141,15 @@ export function getAvailableDates(): DateOption[] {
     d.setDate(today.getDate() + i);
     const day = d.getDay();
     if (day === 1 || day === 5) {
+      const dateStr = formatDateISO(d);
+      const holidayName = getHolidayName(dateStr);
       dates.push({
-        date: formatDateISO(d),
+        date: dateStr,
         label: formatDateDisplay(d),
         shortLabel: formatDateShort(d),
         dayName: day === 5 ? "Friday" : "Monday",
+        isHoliday: !!holidayName,
+        holidayName,
       });
     }
   }

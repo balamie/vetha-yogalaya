@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS bookings (
   parent_name TEXT NOT NULL,
   parent_phone TEXT NOT NULL,
   whatsapp_number TEXT,
-  parent_email TEXT,
+  parent_email TEXT NOT NULL,
   session_date TEXT NOT NULL,
   paired_date TEXT,
   created_at TEXT DEFAULT (datetime('now')),
