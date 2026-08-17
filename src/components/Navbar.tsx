@@ -75,43 +75,48 @@ export function Navbar() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-24 md:h-28 items-center justify-between">
-          {/* Logo — larger, panijoga.pl style */}
-          <a href="/" className="flex items-center gap-3">
+          {/* Logo — always visible */}
+          <a href="/" className="flex items-center gap-3 shrink-0">
             <img src="/vetha_Yogalaya_Logo.png" alt="Vetha Yogalaya" className="h-16 md:h-20 w-auto" />
             <span className="text-xl md:text-2xl font-bold font-heading text-wine whitespace-nowrap">Vetha Yogalaya</span>
           </a>
 
-          {/* Desktop Nav */}
-          <div className="hidden xl:flex items-center gap-6 2xl:gap-8 ml-auto">
-            {links.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                aria-current={active === l.href.replace("#", "") ? "true" : undefined}
-                className={cn(
-                  "text-sm font-medium transition-colors whitespace-nowrap",
-                  active === l.href.replace("#", "")
-                    ? "text-wine font-semibold"
-                    : "text-charcoal hover:text-wine"
-                )}
-              >
-                {l.label}
-              </a>
-            ))}
-            <div className="flex items-center gap-3 ml-2">
+          {/* Desktop Nav — 3-column: links center | actions right */}
+          <div className="hidden xl:grid xl:grid-cols-[1fr_auto] items-center w-full gap-6 ml-8">
+            {/* Center: Nav links */}
+            <nav className="flex items-center justify-center gap-5 2xl:gap-7">
+              {links.map((l) => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  aria-current={active === l.href.replace("#", "") ? "true" : undefined}
+                  className={cn(
+                    "text-sm font-medium transition-colors whitespace-nowrap",
+                    active === l.href.replace("#", "")
+                      ? "text-wine font-semibold"
+                      : "text-charcoal hover:text-wine"
+                  )}
+                >
+                  {l.label}
+                </a>
+              ))}
+            </nav>
+
+            {/* Right: Social + Admin + CTA */}
+            <div className="flex items-center gap-3 shrink-0">
               <a href="https://www.instagram.com/vetha_yogalaya/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="h-10 w-10 rounded-full bg-wine/5 flex items-center justify-center text-wine hover:bg-wine/10 transition-colors">
                 <InstagramIcon />
               </a>
               <a href="https://www.facebook.com/vetha_Yogalaya" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="h-10 w-10 rounded-full bg-wine/5 flex items-center justify-center text-wine hover:bg-wine/10 transition-colors">
                 <FacebookIcon />
               </a>
+              <a href="/admin/bookings" className="text-xs font-medium text-charcoal-light hover:text-wine transition-colors px-2 py-1 rounded-lg hover:bg-rose/10">
+                Admin
+              </a>
+              <a href="#booking" className="inline-flex items-center justify-center text-center leading-tight rounded-full bg-wine px-5 py-2.5 text-sm font-heading font-semibold text-white hover:bg-wine-light transition-colors shadow-lg shadow-wine/20 whitespace-nowrap">
+                Book a Free Trial Class
+              </a>
             </div>
-            <a href="/admin/bookings" className="text-xs font-medium text-charcoal-light hover:text-wine transition-colors px-2 py-1 rounded-lg hover:bg-rose/10">
-              Admin
-            </a>
-            <a href="#booking" className="inline-flex items-center justify-center text-center leading-tight rounded-full bg-wine px-5 py-2.5 text-sm font-heading font-semibold text-white hover:bg-wine-light transition-colors shadow-lg shadow-wine/20">
-              Book a Free<br />Trial Class
-            </a>
           </div>
 
           {/* Mobile Menu Button */}
