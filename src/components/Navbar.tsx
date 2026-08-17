@@ -110,8 +110,13 @@ export function Navbar() {
               <a href="https://www.facebook.com/vetha_Yogalaya" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="h-10 w-10 rounded-full bg-wine/5 flex items-center justify-center text-wine hover:bg-wine/10 transition-colors">
                 <FacebookIcon />
               </a>
-              <a href="/admin/bookings" className="text-xs font-medium text-charcoal-light hover:text-wine transition-colors px-2 py-1 rounded-lg hover:bg-rose/10">
-                Admin
+              <a href="/admin/bookings" className="hidden lg:inline-flex items-center gap-1.5 text-sm font-medium text-charcoal-light hover:text-wine transition-colors px-3 py-1.5 rounded-lg border border-rose-dark/20 hover:border-wine/30 hover:bg-rose/10">
+                <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+                  <polyline points="10 17 15 12 10 7"/>
+                  <line x1="15" y1="12" x2="3" y2="12"/>
+                </svg>
+                Sign In
               </a>
               <a href="#booking" className="inline-flex items-center justify-center text-center leading-tight rounded-full bg-wine px-5 py-2.5 text-sm font-heading font-semibold text-white hover:bg-wine-light transition-colors shadow-lg shadow-wine/20 whitespace-nowrap">
                 Book a Free Trial Class
@@ -148,8 +153,13 @@ export function Navbar() {
                 </a>
               </div>
               <div className="flex items-center gap-3 pt-4 border-t border-rose-dark/20">
-                <a href="/admin/bookings" onClick={() => setOpen(false)} className="text-xs font-medium text-charcoal-light hover:text-wine transition-colors px-3 py-2 rounded-lg hover:bg-rose/10">
-                  Admin
+                <a href="/admin/bookings" onClick={() => setOpen(false)} className="inline-flex items-center gap-1.5 text-sm font-medium text-charcoal-light hover:text-wine transition-colors px-3 py-2 rounded-lg border border-rose-dark/20 hover:border-wine/30 hover:bg-rose/10">
+                  <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+                    <polyline points="10 17 15 12 10 7"/>
+                    <line x1="15" y1="12" x2="3" y2="12"/>
+                  </svg>
+                  Sign In
                 </a>
                 <a href="#booking" onClick={() => setOpen(false)} className="inline-flex items-center rounded-full bg-wine px-6 py-3 text-sm font-heading font-semibold text-white hover:bg-wine-light transition-colors">
                   Book a Free Trial Class
